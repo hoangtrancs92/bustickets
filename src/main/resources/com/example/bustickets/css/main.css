@@ -6,17 +6,13 @@
     -fx-background-color: #475B90;
     -fx-border-color: #475B90;
 }
-.btnTrangChu{
-    -fx-font-size: 15;
-
-}
-.paneTrangChu{
+.btn{
+    -fx-text-fill: #7692DA;
     -fx-opacity:0.5;
 }
-
-.paneTrangChu:hover {
-    -fx-translate-x: 30;
-    -fx-opacity: 0.8;
-    -fx-font-size: 20 ;
-    -fx-text-fill: #ffff;
+.btn:hover{
+    -fx-border-color: white;
+    -fx-opacity: 1;
+    -fx-text-fill: white;
+    -fx-scale-x: 1.1;
 }
