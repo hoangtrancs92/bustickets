@@ -85,7 +85,7 @@
                <graphic>
                   <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -5;">
                      <image>
-                        <Image url="@img/manage%20tickets.png" />
+                        <Image url="@img/manage_tickets.png" />
                      </image>
                   </ImageView>
                </graphic>

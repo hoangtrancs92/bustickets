@@ -6,5 +6,6 @@ module com.example.bustickets {
     opens com.example.bustickets to javafx.fxml;
     exports com.example.bustickets;
     requires  java.sql;
+    requires mysql.connector.java;
 
 }
