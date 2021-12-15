@@ -1,11 +1,13 @@
 package com.example.bustickets.model;
 
+import java.util.Date;
+
 public class tickets {
     private int idtickets;
     private String location_start;
     private String location_end;
     private int quanlity;
-    private String time_start;
+    private Date time_start;
     private String price;
     private int employees_id;
 
@@ -13,7 +15,7 @@ public class tickets {
 
     }
 
-    public tickets(int idtickets, String location_start, String location_end, int quanlity, String time_start, String price, int employees_id) {
+    public tickets(int idtickets, String location_start, String location_end, int quanlity, Date time_start, String price, int employees_id) {
         this.idtickets = idtickets;
         this.location_start = location_start;
         this.location_end = location_end;
@@ -21,6 +23,14 @@ public class tickets {
         this.time_start = time_start;
         this.price = price;
         this.employees_id = employees_id;
+    }
+
+    public Date getTime_start() {
+        return time_start;
+    }
+
+    public void setTime_start(Date time_start) {
+        this.time_start = time_start;
     }
 
     public int getIdtickets() {
@@ -55,13 +65,7 @@ public class tickets {
         this.quanlity = quanlity;
     }
 
-    public String getTime_start() {
-        return time_start;
-    }
 
-    public void setTime_start(String time_start) {
-        this.time_start = time_start;
-    }
 
     public String getPrice() {
         return price;
