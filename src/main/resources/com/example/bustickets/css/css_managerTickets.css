@@ -1,0 +1,61 @@
+
+ /*thiet lap mau mac dinh*/
+.root{
+    -fx-background-color: #475B90;
+}
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+/*mau cua header*/
+.table-view .column-header-background{
+    -fx-background-color: #475B90;
+}
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+/*Mau cua hang ( row)*/
+.table-view .table-cell{
+    -fx-text-fill: #475B90;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+ /*căn lề giữa của text ( col)*/
+ .table-column {
+    -fx-alignment: CENTER;
+     -fx-font-size: 15;
+}
+ /*size chữ của hàng nội dung*/
+ .table-row-cell{
+     -fx-font-size: 13;
+ }
+ /*ẩn scroll bar*/
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
