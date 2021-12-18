@@ -1,15 +1,22 @@
 package com.example.bustickets;
-
+import com.example.bustickets.model.tickets;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import com.example.bustickets.services.managerticketsServices;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class managerticketsController {
+public class managerticketsController implements Initializable{
     // Chuyển đổi screen ( chuyển đổi giữa các file fxml )
     private Stage stage;
     private Scene scene;
@@ -47,11 +54,35 @@ public class managerticketsController {
         stage.show();
     }
     // viet code truy xuat sql tai day
-
-
-
-
-
-
-
+    @FXML
+    private TableView<tickets> tableView;
+    @FXML
+    private TableColumn<tickets, String> col_masove;
+    @FXML
+    TableColumn<tickets, Integer> col_soluong;
+    @FXML
+    TableColumn<tickets,String> col_nhanvien;
+    @FXML
+    TableColumn<tickets,String> col_diemxuatphat;
+    @FXML
+    TableColumn<tickets,String> col_diemketthuc;
+    @FXML
+    TableColumn<tickets,String> col_ngayxuatphat;
+    @FXML
+    TableColumn<tickets,String> col_gioxuatphat;
+    @FXML
+    TableColumn<tickets,String> col_biensoxe;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        managerticketsServices mng = new managerticketsServices();
+        col_masove.setCellValueFactory(new PropertyValueFactory<>("code_seat"));
+        col_soluong.setCellValueFactory(new PropertyValueFactory<>("quanlity"));
+        col_nhanvien.setCellValueFactory(new PropertyValueFactory<>("name_employee"));
+        col_diemxuatphat.setCellValueFactory(new PropertyValueFactory<>("location_start"));
+        col_diemketthuc.setCellValueFactory(new PropertyValueFactory<>("location_end"));
+        col_ngayxuatphat.setCellValueFactory(new PropertyValueFactory<>("date_start"));
+        col_gioxuatphat.setCellValueFactory(new PropertyValueFactory<>("time_start"));
+        col_biensoxe.setCellValueFactory(new PropertyValueFactory<>("code_car"));
+        tableView.setItems((mng.observableList()));
+    }
 }

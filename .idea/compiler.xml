@@ -13,4 +13,9 @@
       <module name="bustickets" target="17" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bustickets" options="" />
+    </option>
+  </component>
 </project>

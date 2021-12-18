@@ -3,13 +3,12 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1400" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.managerticketsController">
@@ -96,7 +95,7 @@
     <top>
         <Pane prefHeight="107.0" prefWidth="1400.0" style="-fx-border-color: white; -fx-background-color: white;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
             <children>
-                <Pane layoutX="1.0" layoutY="1.0" prefHeight="105.0" prefWidth="240.0" style="-fx-background-color: #B3CDE9#B3CDE9;">
+                <Pane layoutX="1.0" layoutY="1.0" prefHeight="105.0" prefWidth="240.0" style="-fx-background-color: #B3CDE9;">
                     <children>
                         <Label layoutX="10.0" layoutY="16.0" text="OUBus" textFill="#475b90">
                             <font>
@@ -112,7 +111,7 @@
                         </Label>
                     </children>
                 </Pane>
-                <Label layoutX="282.0" layoutY="45.0" text="Quản lý vé">
+                <Label layoutX="282.0" layoutY="45.0" text="Quản lý vé" textFill="#475b90">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -121,19 +120,21 @@
     </top>
     <center>
         <Pane prefHeight="426.0" prefWidth="1159.0" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
-            <children>
-                <GridPane layoutX="32.0" layoutY="30.0" prefHeight="535.0" prefWidth="1094.0" style="-fx-background-color: white;">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="547.0" minWidth="10.0" prefWidth="544.8455200195312" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="549.1544799804688" minWidth="10.0" prefWidth="549.1544799804688" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                </GridPane>
-            </children>
+         <children>
+            <TableView fx:id="tableView" layoutX="31.0" layoutY="20.0" prefHeight="535.0" prefWidth="1094.0" stylesheets="@css/css_managerTickets.css">
+              <columns>
+                <TableColumn fx:id="col_masove" prefWidth="75.0" text="Mã số vé" />
+                <TableColumn fx:id="col_soluong" prefWidth="77.0" text="Số lượng" />
+                  <TableColumn fx:id="col_nhanvien" prefWidth="177.0" text="Nhân viên" />
+                  <TableColumn fx:id="col_diemxuatphat" prefWidth="149.0" text="Nơi xuất phát" />
+                  <TableColumn fx:id="col_diemketthuc" prefWidth="146.5" text="Nơi kết thúc" />
+                  <TableColumn fx:id="col_ngayxuatphat" prefWidth="162.5" text="Ngày xuất phát" />
+                  <TableColumn fx:id="col_gioxuatphat" prefWidth="111.5" text="Thời gian " />
+                  <TableColumn fx:id="col_biensoxe" prefWidth="93.11712646484375" text="Số hiệu xe" />
+                  <TableColumn prefWidth="101.0" text="Hành động" />
+              </columns>
+            </TableView>
+         </children>
         </Pane>
     </center>
 </BorderPane>
