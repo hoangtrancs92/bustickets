@@ -175,7 +175,10 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <ComboBox prefHeight="40.0" prefWidth="344.0" style="-fx-border-color: #475B90; -fx-background-color: white; -fx-border-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ComboBox prefHeight="40.0" prefWidth="344.0" style="-fx-border-color: #475B90; -fx-background-color: white; -fx-border-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ComboBox>
                   <Label text="Số lượng" textFill="#475b90" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
@@ -199,7 +202,10 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <DatePicker prefHeight="38.0" prefWidth="206.0" style="-fx-border-color: #475B90; -fx-border-radius: 10; -fx-background-color: white;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <DatePicker prefHeight="38.0" prefWidth="206.0" style="-fx-border-color: #475B90; -fx-border-radius: 10; -fx-background-color: white;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></DatePicker>
                   <Label text="Thời gian khởi hành" textFill="#475b90" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font size="16.0" />
