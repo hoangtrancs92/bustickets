@@ -1,24 +1,40 @@
 package com.example.bustickets.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class tickets {
     private int idtickets;
     private String code_seat;
     private int quanlity;
+    private String price;
     private String name_employee;
     private String location_start;
     private String location_end;
-    private Date date_start;
+    private String date_start;
     private String time_start;
     private String code_car;
-
+    private int employees_id;
+    private int cars_id;
+    private LocalDate time;
     // --- Constructor ---
     public  tickets(){
 
     }
 
-    public tickets(String code_seat, int quanlity,String name_employee,String location_start,String location_end,Date date_start,String time_start,String code_car) {
+    public tickets(int quanlity, String price, String name_employee, String location_start, String location_end, String date_start, String time_start, String code_car) {
+        this.quanlity = quanlity;
+        this.price = price;
+        this.name_employee = name_employee;
+        this.location_start = location_start;
+        this.location_end = location_end;
+        this.date_start = date_start;
+        this.time_start = time_start;
+        this.code_car = code_car;
+    }
+
+    //Manager_tickets
+    public tickets(String code_seat, int quanlity,String name_employee,String location_start,String location_end,String date_start,String time_start,String code_car) {
         this.code_seat = code_seat;
         this.quanlity = quanlity;
         this.name_employee = name_employee;
@@ -28,6 +44,29 @@ public class tickets {
         this.time_start = time_start;
         this.code_car = code_car;
     }
+    // Create_tickets
+    public tickets(String location_start, String location_end,int quanlity, String date_start, String price, int employees_id, String time_start, int cars_id){
+        this.location_start = location_start;
+        this.location_end = location_end;
+        this.quanlity = quanlity;
+        this.date_start = date_start;
+        this.price = price;
+        this.employees_id = employees_id;
+        this.time_start = time_start;
+        this.cars_id = cars_id;
+    }
+//        public tickets(String location_start, String location_end,int quanlity, LocalDate time, String price, int employees_id, String time_start, int cars_id){
+//        this.location_start = location_start;
+//        this.location_end = location_end;
+//        this.quanlity = quanlity;
+//        this.time = time;
+//        this.price = price;
+//        this.employees_id = employees_id;
+//        this.time_start = time_start;
+//        this.cars_id = cars_id;
+//    }
+
+
 
     // --- Constructor ---
 
@@ -59,11 +98,11 @@ public class tickets {
     }
 
     //Setter and getter date_start
-    public Date getDate_start() {
+    public String getDate_start() {
         return date_start;
     }
 
-    public void setDate_start(Date date_start) {
+    public void setDate_start(String date_start) {
         this.date_start = date_start;
     }
 
@@ -111,5 +150,37 @@ public class tickets {
 
     public void setQuanlity(int quanlity) {
         this.quanlity = quanlity;
+    }
+
+    public int getEmployees_id() {
+        return employees_id;
+    }
+
+    public void setEmployees_id(int employees_id) {
+        this.employees_id = employees_id;
+    }
+
+    public int getCars_id() {
+        return cars_id;
+    }
+
+    public void setCars_id(int cars_id) {
+        this.cars_id = cars_id;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public LocalDate getTime() {
+        return time;
+    }
+
+    public void setTime(LocalDate time) {
+        this.time = time;
     }
 }

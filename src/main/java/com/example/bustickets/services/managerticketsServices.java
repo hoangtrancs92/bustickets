@@ -4,6 +4,7 @@ import com.example.bustickets.config.JdbcUtils;
 import com.example.bustickets.model.tickets;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,18 +15,19 @@ public class managerticketsServices {
         ObservableList<tickets> result = FXCollections.observableArrayList();
         try {
             Connection cnn = JdbcUtils.getCnn();
-            ResultSet rs = cnn.createStatement().executeQuery("select seats.code, tickets.quanlity,employees.name,tickets.location_start,tickets.location_end,tickets.date_start, tickets.time_start ,code_car from cars, tickets, seats,employees where cars.idcars=seats.idseats and tickets.idtickets= seats.idseats\n");
+            ResultSet rs = cnn.createStatement().executeQuery(" select tickets.*, employees.name, cars.code_car from tickets, " +
+                    "employees, cars where employees.idemployees = tickets.employees_id and cars.idcars = tickets.cars_id");
 
             while (rs.next()){
                 result.add(new tickets(
                         rs.getString(1),
-                        rs.getInt(2),
+                        rs.getInt(4),
+                        rs.getString(10),
+                        rs.getString(2),
                         rs.getString(3),
-                        rs.getString(4),
                         rs.getString(5),
-                        rs.getDate(6),
-                        rs.getString(7),
-                        rs.getString(8)
+                        rs.getString(8),
+                        rs.getString(11)
                         ));
             }
         } catch (SQLException e) {
