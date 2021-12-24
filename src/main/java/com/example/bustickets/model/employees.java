@@ -19,6 +19,11 @@ public class employees {
         this.stores_id = stores_id;
     }
 
+    @Override
+    public String toString() {
+        return  name;
+    }
+
     public int getIdemployees() {
         return idemployees;
     }

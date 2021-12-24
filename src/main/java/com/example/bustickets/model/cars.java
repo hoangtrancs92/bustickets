@@ -13,6 +13,14 @@ public class cars {
         this.code_car = code_car;
         this.number_seat = number_seat;
     }
+
+    @Override
+    public String toString() {
+        return "Mã xe: "+this.code_car+" - "+this.number_seat + " chỗ" ;
+    }
+
+
+
     public int getIdcars() {
         return idcars;
     }
