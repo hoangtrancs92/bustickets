@@ -1,7 +1,6 @@
 package com.example.bustickets.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class tickets {
     private int idtickets;
@@ -31,6 +30,17 @@ public class tickets {
         this.date_start = date_start;
         this.time_start = time_start;
         this.code_car = code_car;
+    }
+    // Id_TIckets
+    public tickets(int idtickets) {
+        this.idtickets = idtickets;
+    }
+
+    @Override
+    public String toString() {
+        return "tickets{" +
+                "idtickets=" + idtickets +
+                '}';
     }
 
     //Manager_tickets

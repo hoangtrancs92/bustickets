@@ -1,10 +1,11 @@
 package com.example.bustickets;
-
+import com.example.bustickets.model.detail_tickets;
 import com.example.bustickets.config.JdbcUtils;
 import com.example.bustickets.model.employees;
 import com.example.bustickets.model.cars;
 import com.example.bustickets.model.tickets;
 import com.example.bustickets.services.createticketsServices;
+import com.example.bustickets.services.detailticketsServices;
 import com.example.bustickets.services.employeeServices;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -19,13 +20,8 @@ import javafx.stage.Stage;
 import com.example.bustickets.services.carServices;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.sql.*;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -98,10 +94,11 @@ public class createticketsController implements Initializable {
         } catch (SQLException e) {
             Logger.getLogger(createticketsController.class.getName()).log(Level.SEVERE, (String) null);
         }
+
     }
 
 
-    public void addTickets(ActionEvent event){
+    public void addTickets(ActionEvent event) throws SQLException {
         // alert complete
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("WARNING");
@@ -121,19 +118,30 @@ public class createticketsController implements Initializable {
                 scene = new Scene(fxmlLoader);
                 stage.setScene(scene);
                 stage.show();
-
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            System.out.println("SUCCESSFUL");
+            // Auto create detail_tickets ( dua tren so cho ngoi )
+            createticketsServices st = new createticketsServices();
+            for(int i = 0; i < st.idSetOffTickets().size();i++){
+                for (int j =this.carsComboBox.getSelectionModel().getSelectedItem().getNumber_seat(); j >0;j--){
+                    detail_tickets dt = new detail_tickets(UUID.randomUUID().toString(),st.idSetOffTickets().get(i).getIdtickets());
+//                    System.out.println(dt.getIddetail_tickets());
+//                    System.out.println(dt.getId_tickets());
+                    detailticketsServices dtS = new detailticketsServices();
+//                    System.out.println(dtS);
+                    dtS.AddDetailTickets(dt);
+                }
 
+            }
+            System.out.println("SUCCESSFUL");
         }
-        else{
+        else
+        {
             System.out.println(("ERROR"));
         }
-
     }
 }
