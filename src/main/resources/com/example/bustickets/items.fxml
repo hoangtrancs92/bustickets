@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="334.0" prefWidth="263.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.itemsController">
+   <children>
+      <VBox layoutX="14.0" prefHeight="308.0" prefWidth="254.0" style="-fx-background-color: #ffff;" styleClass="shadow" stylesheets="@css/css_managerBookings.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="43.0" prefWidth="263.0">
+               <children>
+                  <Label fx:id="carHeader_label" alignment="CENTER" prefHeight="42.0" prefWidth="282.0" text="Xe">
+                     <font>
+                        <Font name="Arial Black" size="18.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="43.0" prefWidth="263.0">
+               <children>
+                  <Label fx:id="locationStart_label" alignment="CENTER" prefHeight="43.0" prefWidth="130.0" text="Điểm đi" />
+                  <Label fx:id="locationEnd_label" alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="133.0" text="Điểm đến" textAlignment="JUSTIFY" />
+               </children>
+            </HBox>
+            <HBox prefHeight="48.0" prefWidth="263.0">
+               <children>
+                  <Label fx:id="time_label" alignment="CENTER" contentDisplay="TOP" prefHeight="48.0" prefWidth="114.0" text="Thời gian" />
+                  <Label fx:id="dateStart_label" alignment="CENTER" prefHeight="48.0" prefWidth="155.0" text="ngày" />
+               </children>
+            </HBox>
+            <ImageView fx:id="imgview" fitHeight="131.0" fitWidth="263.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="price_button" alignment="CENTER" mnemonicParsing="false" prefHeight="70.0" prefWidth="263.0" styleClass="btnDatVe" stylesheets="@css/css_managerBookings.css" text="Đặt">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

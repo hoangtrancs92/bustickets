@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class managerticketsServices {
     public  ObservableList<tickets> observableList(){
@@ -35,5 +36,4 @@ public class managerticketsServices {
         }
         return  result;
     }
-
 }
