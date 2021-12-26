@@ -1,0 +1,24 @@
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+.btnDatVe{
+    -fx-font-weight: bold;
+    -fx-background-color: white ;
+    -fx-font-size:16;
+    -fx-border-color: #475B90;
+    -fx-text-fill: #2f3542;
+    -fx-hovered-background: #475B90;
+    -fx-hovered-textfill: white;
+}
+.btnDatVe:hover{
+    -fx-font-weight: bold;
+    -fx-background-color: -fx-hovered-background;
+    -fx-font-size: 16;
+    -fx-text-fill: -fx-hovered-textfill;
+    -fx-border-color: #475B90;
+    -fx-border-width:3;
+
+}

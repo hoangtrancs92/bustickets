@@ -21,6 +21,7 @@ public class tickets {
 
     }
 
+    // create tickets --- create_tickets.fxml ---
     public tickets(int quanlity, String price, String name_employee, String location_start, String location_end, String date_start, String time_start, String code_car) {
         this.quanlity = quanlity;
         this.price = price;
@@ -31,11 +32,12 @@ public class tickets {
         this.time_start = time_start;
         this.code_car = code_car;
     }
-    // Id_TIckets
+
+    // Take Id_TIckets --- create tickets controller ---
     public tickets(int idtickets) {
+
         this.idtickets = idtickets;
     }
-
     @Override
     public String toString() {
         return "tickets{" +
@@ -65,23 +67,27 @@ public class tickets {
         this.time_start = time_start;
         this.cars_id = cars_id;
     }
-//        public tickets(String location_start, String location_end,int quanlity, LocalDate time, String price, int employees_id, String time_start, int cars_id){
-//        this.location_start = location_start;
-//        this.location_end = location_end;
-//        this.quanlity = quanlity;
-//        this.time = time;
-//        this.price = price;
-//        this.employees_id = employees_id;
-//        this.time_start = time_start;
-//        this.cars_id = cars_id;
-//    }
+    // detail_tickets --- bookings_tickets.fxml ---
 
+    public tickets(String time_start, String code_car) {
+        this.time_start = time_start;
+        this.code_car = code_car;
+    }
+    // detail_tickets 2 --- bookings_tickets.fxml ---
+
+    public  tickets(String time_start, String code_car,String location_start,String location_end,String date_start,String price){
+        this.time_start = time_start;
+        this.code_car = code_car;
+        this.location_start = location_start;
+        this.location_end = location_end;
+        this.date_start = date_start;
+        this.price = price;
+    }
 
 
     // --- Constructor ---
 
     //Setter and getter name_employee
-
     public String getName_employee() {
         return name_employee;
     }
@@ -162,6 +168,7 @@ public class tickets {
         this.quanlity = quanlity;
     }
 
+    //Setter and getter employee_id
     public int getEmployees_id() {
         return employees_id;
     }
@@ -170,6 +177,7 @@ public class tickets {
         this.employees_id = employees_id;
     }
 
+    //Setter and getter cars_id
     public int getCars_id() {
         return cars_id;
     }
@@ -178,6 +186,7 @@ public class tickets {
         this.cars_id = cars_id;
     }
 
+    //Setter and getter Price
     public String getPrice() {
         return price;
     }
@@ -186,6 +195,7 @@ public class tickets {
         this.price = price;
     }
 
+    //Setter and getter time
     public LocalDate getTime() {
         return time;
     }
