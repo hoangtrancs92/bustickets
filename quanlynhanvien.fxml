@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+  <columns>
+    <TableColumn prefWidth="84.0" text="Mã số vé" />
+    <TableColumn prefWidth="102.0" text="Số lượng" />
+      <TableColumn prefWidth="97.0" text="Nhân viên" />
+      <TableColumn prefWidth="138.0" text="Nơi xuất phát" />
+      <TableColumn prefWidth="112.0" text="Nơi kết thúc" />
+      <TableColumn prefWidth="201.0" text="Ngày xuất phát" />
+      <TableColumn prefWidth="134.0" text="Thời gian" />
+      <TableColumn prefWidth="147.0" text="Số hiệu xe" />
+      <TableColumn prefWidth="148.0" text="Hành động" />
+      <TableColumn prefWidth="118.0" text="Xóa" />
+  </columns>
+</TableView>
