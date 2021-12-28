@@ -98,7 +98,7 @@ public class bookingsController implements Initializable {
                 grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
-                GridPane.setMargin(anchorPane, new Insets(45));
+                GridPane.setMargin(anchorPane, new Insets(27));
             }
         } catch (SQLException e) {
             e.printStackTrace();
