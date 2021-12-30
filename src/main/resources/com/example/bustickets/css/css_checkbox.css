@@ -1,3 +1,9 @@
+.check-box {
+    /* default properties */
+    box-color: black;
+    mark-color: white;
+    selected-box-color: #0984e3;
+}
 .check-box .box {
 
     -fx-background-color: white;
@@ -17,5 +23,5 @@
 
 .check-box:selected .box {
 
-    -fx-background-color: #28a3f4;
+    -fx-background-color: selected-box-color;
 }

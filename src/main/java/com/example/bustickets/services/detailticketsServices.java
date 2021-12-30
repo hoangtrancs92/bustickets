@@ -25,4 +25,21 @@ public class detailticketsServices {
         }
 
     }
+    // xuat ra man hinh so ghe va thong tin cua tung ve cua tung ve
+    public ArrayList<detail_tickets> ShowdetailTickets(tickets ticket) throws SQLException{
+        ArrayList<detail_tickets> detail = new ArrayList<>();
+        try {
+            Connection cnn = JdbcUtils.getCnn();
+            PreparedStatement stm = cnn.prepareStatement("select * from detail_tickets where id_tickets like concat('%','"+ticket.getIdtickets()+"','%')");
+            ResultSet rs = stm.executeQuery();
+//            ResultSet rs = cnn.createStatement().executeQuery("Select detail_tickets.* from detail_tickets ");
+            while (rs.next()){
+                detail.add(new detail_tickets(rs.getString(1),rs.getInt(2),rs.getInt(3)));
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return detail;
+    }
 }

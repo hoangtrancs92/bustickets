@@ -7,7 +7,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class createticketsServices {
-    private static final int TXT_NUMBER = 8;
     public  void addSetOfTickets(tickets t) throws SQLException {
             try {
                 Connection cnn = JdbcUtils.getCnn();
@@ -27,7 +26,7 @@ public class createticketsServices {
                 e.printStackTrace();
             }
     }
-    public ArrayList<tickets> idSetOffTickets() throws SQLException{
+    public ArrayList<tickets> idSetOffTickets(){
         ArrayList<tickets> arrayList = new ArrayList<>();
         try {
             Connection cnn = JdbcUtils.getCnn();

@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="330.0" prefWidth="171.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.itemsController">
+<AnchorPane onMousePressed="#click" prefHeight="330.0" prefWidth="192.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.itemsController">
    <children>
-      <VBox layoutX="14.0" prefHeight="308.0" prefWidth="263.0" style="-fx-background-color: #ffff;" styleClass="shadow" stylesheets="@css/css_managerBookings.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-31.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="14.0" prefHeight="330.0" prefWidth="187.0" style="-fx-background-color: #ffff;" styleClass="shadow" stylesheets="@css/css_managerBookings.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="43.0" prefWidth="263.0">
                <children>
@@ -38,7 +38,7 @@
                <image>
                   <Image url="@img/white_bus.png" />
                </image></ImageView>
-            <Button fx:id="price_button" alignment="CENTER" mnemonicParsing="false" onAction="#switch_booking_seats" prefHeight="69.0" prefWidth="239.0" styleClass="btnDatVe" stylesheets="@css/css_managerBookings.css" text="Đặt">
+            <Button fx:id="price_button" alignment="CENTER" mnemonicParsing="false" onMousePressed="#click" prefHeight="69.0" prefWidth="239.0" styleClass="btnDatVe" stylesheets="@css/css_managerBookings.css" text="Đặt">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
