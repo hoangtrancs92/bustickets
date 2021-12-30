@@ -2,7 +2,7 @@ package com.example.bustickets.model;
 
 import java.time.LocalDate;
 
-public class tickets {
+public class tickets  extends cars{
     private int idtickets;
     private String code_seat;
     private int quanlity;
@@ -75,13 +75,15 @@ public class tickets {
     }
     // detail_tickets 2 --- bookings_tickets.fxml ---
 
-    public  tickets(String time_start, String code_car,String location_start,String location_end,String date_start,String price){
+    public  tickets(String time_start, String code_car,String location_start,String location_end,String date_start,String price,int idtickets,int number_seat ){
         this.time_start = time_start;
         this.code_car = code_car;
         this.location_start = location_start;
         this.location_end = location_end;
         this.date_start = date_start;
         this.price = price;
+        this.idtickets = idtickets;
+        this.setNumber_seat(number_seat);
     }
 
 

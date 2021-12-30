@@ -12,14 +12,17 @@ public class bookingsServices {
         ArrayList<tickets> detail = new ArrayList<>();
         try {
             Connection cnn = JdbcUtils.getCnn();
-            ResultSet rs = cnn.createStatement().executeQuery("SELECT cars.code_car,tickets.* FROM cars,tickets where cars.idcars = tickets.cars_id;");
+            ResultSet rs = cnn.createStatement().executeQuery("SELECT cars.code_car,tickets.*,cars.number_seat FROM cars,tickets where cars.idcars = tickets.cars_id;");
             while (rs.next()){
                 detail.add(new tickets( rs.getString(9),
                                         rs.getString(1),
                                         rs.getString(3),
                                         rs.getString(4),
                                         rs.getString(6),
-                                        rs.getString(7)));
+                                        rs.getString(7),
+                                        rs.getInt(2),
+                                        rs.getInt(11)
+                        ));
 
             }
         }

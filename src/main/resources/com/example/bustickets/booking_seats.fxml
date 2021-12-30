@@ -3,18 +3,16 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1400" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.bookingsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1400" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.itemsController">
     <left>
         <Pane prefHeight="677.0" prefWidth="241.0" styleClass="menu" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
             <children>
@@ -33,7 +31,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="-5.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToManage_employees" prefHeight="90.0" prefWidth="245.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Nhân viên">
+                <Button layoutX="-5.0" layoutY="361.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="245.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Nhân viên">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -31;">
                             <image>
@@ -48,7 +46,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="-5.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCreate_tickets" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Tạo vé" textAlignment="JUSTIFY" textFill="WHITE">
+                <Button layoutX="-5.0" layoutY="90.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Tạo vé" textAlignment="JUSTIFY" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -45;">
                             <image>
@@ -63,7 +61,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="-6.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchToManager_tickets" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý vé" textAlignment="JUSTIFY">
+                <Button layoutX="-6.0" layoutY="180.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý vé" textAlignment="JUSTIFY">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -30;">
                             <image>
@@ -78,7 +76,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="-6.0" layoutY="270.0" mnemonicParsing="false" onAction="#switchToManage_users" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý user">
+                <Button layoutX="-6.0" layoutY="270.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý user">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -23;">
                             <image>
@@ -96,7 +94,7 @@
             </children></Pane>
     </left>
     <top>
-        <Pane prefHeight="107.0" prefWidth="1400.0" style="-fx-background-color: #ffffff#ffffff;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
+        <Pane prefHeight="107.0" prefWidth="1400.0" style="-fx-border-color: white; -fx-background-color: white;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
             <children>
                 <Pane layoutX="1.0" layoutY="1.0" prefHeight="105.0" prefWidth="240.0" style="-fx-background-color: #B3CDE9#B3CDE9;">
                     <children>
@@ -114,7 +112,7 @@
                         </Label>
                     </children>
                 </Pane>
-                <Label layoutX="282.0" layoutY="45.0" text="Đặt vé">
+                <Label fx:id="test" layoutX="282.0" layoutY="45.0" text="layout">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -123,35 +121,19 @@
     </top>
     <center>
         <Pane prefHeight="426.0" prefWidth="1159.0" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" layoutX="30.0" layoutY="36.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="526.0" prefWidth="705.0" stylesheets="@css/css_managerBookings.css">
-               <children>
-                  <ScrollPane fx:id="scroll" prefHeight="526.0" prefWidth="716.0" stylesheets="@css/css_managerBookings.css">
-                     <content>
-                        <GridPane fx:id="grid" nodeOrientation="LEFT_TO_RIGHT" prefHeight="164.0" prefWidth="179.0">
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                           </rowConstraints>
-                        </GridPane>
-                     </content>
-                  </ScrollPane>
-               </children>
-            </HBox>
-            <VBox layoutX="742.0" layoutY="37.0" prefHeight="524.0" prefWidth="388.0">
-               <children>
-                  <Pane prefHeight="55.0" prefWidth="388.0" />
-                  <ScrollPane prefHeight="412.0" prefWidth="388.0">
-                     <content>
-                        <GridPane fx:id="seat_grid" prefHeight="61.0" prefWidth="66.0">
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                     </content>
-                  </ScrollPane>
-               </children>
-            </VBox>
-         </children>
+            <children>
+                <GridPane layoutX="32.0" layoutY="30.0" prefHeight="535.0" prefWidth="1094.0" style="-fx-background-color: white;">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="547.0" minWidth="10.0" prefWidth="544.8455200195312" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="549.1544799804688" minWidth="10.0" prefWidth="549.1544799804688" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                </GridPane>
+            </children>
         </Pane>
     </center>
 </BorderPane>
