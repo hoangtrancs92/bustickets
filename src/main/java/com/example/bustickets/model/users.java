@@ -15,7 +15,7 @@ public class users {
     private int sex;
     private String birthday;
 
-    public users(TextField usernameField, PasswordField passwordField, TextField emailField, TextField phoneField, TextField addressField, DatePicker birthday, int sex) {}
+    //public users(TextField usernameField, PasswordField passwordField, TextField emailField, TextField phoneField, TextField addressField, DatePicker birthday, int sex) {}
 
     public users(int idusers, String name, String password,String email, String phone, String address, String birthday, int sex){
         this.idusers = idusers;
@@ -27,7 +27,7 @@ public class users {
         this.birthday = birthday;
         this.sex = sex;
     }
-    public users(String name, String password,String email, String phone, String address, String birthday, int sex){
+    public users(String name, String password, String email, String phone, String address, String birthday, int sex){
         this.name = name;
         this.password = password;
         this.email = email;

@@ -20,8 +20,11 @@ public class userServices {
             stm1.setString(6,u.getBirthday());
             stm1.setInt(7,u.getSex());
             stm1.executeUpdate();
+
+            stm1.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 }
