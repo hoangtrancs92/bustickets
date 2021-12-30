@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.registerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.registerController">
    <children>
       <AnchorPane layoutX="-7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="556.0" style="-fx-background-color: #84DFFF;">
          <children>
@@ -102,7 +102,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="birthday" layoutX="199.0" layoutY="502.0" prefHeight="30.0" prefWidth="247.0" />
+      <DatePicker fx:id="txtBirthday" layoutX="199.0" layoutY="502.0" prefHeight="30.0" prefWidth="247.0" />
       <Label layoutX="96.0" layoutY="547.0" text="Giới tính:">
          <font>
             <Font size="18.0" />
@@ -143,7 +143,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnClose" layoutX="99.0" layoutY="674.0" mnemonicParsing="false" onAction="#CancelRegister" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #84DFFF;" text="Đóng">
+      <Button fx:id="btnClose" layoutX="99.0" layoutY="722.0" mnemonicParsing="false" onAction="#CancelRegister" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #84DFFF;" text="Đóng">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -167,5 +167,33 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </PasswordField>
+      <Label fx:id="lblConfirmMessage" alignment="CENTER" layoutX="253.0" layoutY="290.0" prefHeight="30.0" prefWidth="194.0" textAlignment="CENTER" textFill="#eb0101">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblEmailMessage" alignment="CENTER" layoutX="296.0" layoutY="156.0" prefHeight="30.0" prefWidth="150.0" textAlignment="CENTER" textFill="#eb0101">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPhoneMessage" alignment="CENTER" layoutX="253.0" layoutY="355.0" prefHeight="30.0" prefWidth="194.0" textAlignment="CENTER" textFill="#eb0101">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRegisterMessage" alignment="CENTER" layoutX="165.0" layoutY="580.0" prefHeight="30.0" prefWidth="218.0" textAlignment="CENTER" textFill="#eb0101">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="99.0" layoutY="671.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #84DFFF;" text="Quay lại">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
