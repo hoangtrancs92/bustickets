@@ -117,6 +117,16 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <Label layoutX="1111.0" layoutY="50.0" text="Trần Văn Bo">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="1232.0" layoutY="50.0" prefHeight="26.0" prefWidth="71.0" text="ID">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
          </children></Pane>
    </top>
    <center>

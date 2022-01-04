@@ -1,15 +1,21 @@
 package com.example.bustickets;
 
+import com.example.bustickets.model.users;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class manageremployeesController {
+
+
+
     // Chuyển đổi screen ( chuyển đổi giữa các file fxml )
     private Stage stage;
     private Scene scene;

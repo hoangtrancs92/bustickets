@@ -1,6 +1,7 @@
 package com.example.bustickets;
 import com.example.bustickets.config.JdbcUtils;
 import com.example.bustickets.model.admin;
+import com.example.bustickets.model.users;
 import com.example.bustickets.services.AES;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,17 +17,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.security.auth.login.Configuration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.EventObject;
 import java.util.ResourceBundle;
 
 public class loginController implements Initializable {
     final String secretKey = "12345678";
-
+    static String uname = "";
     @FXML private Label LoginMessage;
     @FXML private Button btnCancelLogin;
     @FXML private TextField txtUsername;
@@ -34,6 +37,12 @@ public class loginController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent fxmlLoader;
+    private EventObject event;
+
+    public static String getVariable(){
+        return uname;
+    }
+
     public void LoginButton (ActionEvent event) throws SQLException {
         if(txtUsername.getText().isBlank() == false && passwordField.getText().isBlank() == false){
             validateLogin();
@@ -71,7 +80,14 @@ public class loginController implements Initializable {
                 String password = rs.getString("password");
                 password = AES.decrypt(password,secretKey);
                 if(rs.getString("email").equals(txtUsername.getText()) && password.equals(passwordField.getText())){
+
                     LoginMessage.setText("Đăng nhập thành công!");
+                    uname = txtUsername.getText();
+                    fxmlLoader = FXMLLoader.load(getClass().getResource("layout.fxml"));
+                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(fxmlLoader);
+                    stage.setScene(scene);
+                    stage.show();
                     LoginMessage.setTextFill(Color.GREEN);
                 }else {
                     LoginMessage.setText("Email hoặc mật khẩu không đúng. Vui lòng thử lại!");
@@ -82,4 +98,5 @@ public class loginController implements Initializable {
             e.printStackTrace();
             }
         }
+
 }

@@ -1,3 +1,5 @@
+package com.example.bustickets.testcase;
+
 import com.example.bustickets.config.JdbcUtils;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;

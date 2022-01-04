@@ -16,6 +16,9 @@ public class users {
     private String birthday;
 
     //public users(TextField usernameField, PasswordField passwordField, TextField emailField, TextField phoneField, TextField addressField, DatePicker birthday, int sex) {}
+    public users (){
+
+    }
 
     public users(int idusers, String name, String password,String email, String phone, String address, String birthday, int sex){
         this.idusers = idusers;
@@ -36,7 +39,12 @@ public class users {
         this.birthday = birthday;
         this.sex = sex;
     }
+    public users(int idusers, String name){
 
+        this.idusers = idusers;
+        this.name = name;
+
+    }
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat(("dd/MM/yyyy"));
