@@ -10,6 +10,11 @@ public class bookings {
     public bookings(){
 
     }
+    public bookings(String code,int status, int users_id){
+        this.code = code;
+        this.status = status;
+        this.users_id = users_id;
+    }
 
     public bookings(int idbookings, String code, int status, int users_id, int seats_id) {
         this.idbookings = idbookings;

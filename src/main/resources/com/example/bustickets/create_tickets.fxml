@@ -153,11 +153,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label text="Điểm đi" textFill="#475b90" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
                   <ComboBox fx:id="carsComboBox" prefHeight="40.0" prefWidth="344.0" style="-fx-border-color: #475B90; -fx-background-color: white; -fx-border-radius: 10;" GridPane.columnIndex="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -167,14 +162,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label text="Điểm đến" textFill="#475b90" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txt_diemden" prefHeight="40.0" prefWidth="334.0" promptText="EX: Thành phố Hà Hội" style="-fx-border-color: #475B90; -fx-border-radius: 10; -fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <TextField fx:id="txt_giave" prefHeight="40.0" prefWidth="334.0" promptText="VNĐ" style="-fx-border-color: #475B90; -fx-border-radius: 10; -fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="txt_diemdi" prefHeight="42.0" prefWidth="334.0" promptText="EX: Thành phố Hồ Chí Minh" style="-fx-border-color: #475B90; -fx-border-radius: 10; -fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" onAction="#addTickets" prefHeight="60.0" prefWidth="206.0" styleClass="btnThem" stylesheets="@css/css_createTickets.css" text="Thêm" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -188,13 +176,37 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_thoigiankhoihanh" alignment="CENTER" prefHeight="44.0" prefWidth="206.0" promptText="EX: 7:30" style="-fx-border-color: #475B90; -fx-border-radius: 10; -fx-background-color: white;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                   <Label alignment="CENTER" text="Nhân viên" textFill="#475b90" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <ComboBox fx:id="employeesComboBox" prefHeight="40.0" prefWidth="344.0" style="-fx-border-color: #475B90; -fx-background-color: white; -fx-border-radius: 10;" GridPane.columnIndex="4">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ComboBox>
+                  <ComboBox fx:id="StartPoint_cbbox" prefHeight="40.0" prefWidth="344.0" style="-fx-border-color: #475B90; -fx-background-color: white; -fx-border-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ComboBox>
+                  <Label text="Điểm đi" textFill="#475b90" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="endPoint_cbbox" prefHeight="40.0" prefWidth="344.0" style="-fx-border-color: #475B90; -fx-background-color: white; -fx-border-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ComboBox>
+                  <Label text="Điểm đến" textFill="#475b90" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="time_comboBox" prefHeight="40.0" prefWidth="344.0" style="-fx-border-color: #475B90; -fx-background-color: white; -fx-border-radius: 10;" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

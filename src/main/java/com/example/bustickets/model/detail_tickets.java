@@ -17,6 +17,9 @@ public class detail_tickets {
         this.id_tickets = id_tickets;
     }
 
+    public detail_tickets() {
+
+    }
 
 
     // Constructor

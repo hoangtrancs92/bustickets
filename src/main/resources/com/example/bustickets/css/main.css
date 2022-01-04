@@ -16,3 +16,11 @@
     -fx-text-fill: white;
     -fx-scale-x: 1.1;
 }
+.btn_dangxuat{
+    -fx-background-color:#475B90 ;
+}
+.btn_dangxuat:hover{
+    -fx-text-fill: white;
+    -fx-background-color: #334169;
+    -fx-cursor: hand;
+}

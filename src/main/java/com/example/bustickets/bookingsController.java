@@ -1,4 +1,5 @@
 package com.example.bustickets;
+import com.example.bustickets.model.detail_tickets;
 import com.example.bustickets.model.tickets;
 import com.example.bustickets.services.bookingsServices;
 import com.example.bustickets.services.detailticketsServices;
@@ -10,11 +11,10 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
@@ -24,8 +24,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class bookingsController implements Initializable {
@@ -76,14 +76,42 @@ public class bookingsController implements Initializable {
     @FXML
     private ScrollPane scroll;
 
+    @FXML
+    private Button muave_button;
+
+    @FXML
+    private Button test_button;
+
     private Mylistener mylistener;
+    private MyListenner_bookingsSeats myListenner_bookingsSeats;
+
+    @FXML
+    void themchongoi_button(ActionEvent event) throws IOException {
 
 
+        detail_tickets dt = new detail_tickets();
+//        ArrayList<String> cloneArraylist;
+//        cloneArraylist = myListenner_bookingsSeats.onClickListener_bookingsSeats(dt);
+        System.out.println("enter");
+//        for(int i =1;i <=cloneArraylist.size()-1;i++){
+//            System.out.println(cloneArraylist.get(i));
+//        }
+        System.out.println("S ="+arrayList);
+    }
+    ///   ********* /////
+    ArrayList<String> arrayList = new ArrayList<>();
+    ///   ********* /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        int so1 = 1; // la user
+//        int so2 = 2; // la admin
+//        int so3 = 3; // la nhan vien
+//        if(so1 ==1){
+//            test_button.setDisable(true);
+//            test_button.setStyle("-fx-opacity: 0");
+//        }
         int column = -1;
         int row = 1;
-
 
         bookingsServices bkS = new bookingsServices();
         detailticketsServices dtK = new detailticketsServices();
@@ -91,6 +119,7 @@ public class bookingsController implements Initializable {
         mylistener = new Mylistener() {
             @Override
             public void onClickListener(tickets ticket) throws IOException {
+                muave_button.setStyle("-fx-opacity: 1");
                 int column_items_2 = -1;
                 int row_items_2 = 1;
                 int count =0;
@@ -102,7 +131,7 @@ public class bookingsController implements Initializable {
                                 fxmlLoader.setLocation(getClass().getResource("items_2.fxml"));
                                 AnchorPane anchorPane1 = fxmlLoader.load();
                                 items2Controller Items2Controller = fxmlLoader.getController();
-                                Items2Controller.setData(dtK.ShowdetailTickets(ticket).get(i));
+                                Items2Controller.setData(dtK.ShowdetailTickets(ticket).get(i),myListenner_bookingsSeats);
                                 column_items_2++;
                                 if (column_items_2 == 4) {
                                     column_items_2 = 0;
@@ -128,13 +157,56 @@ public class bookingsController implements Initializable {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+            }
+        };
+        // Xu ly xu kien ve
 
 
+        //xu ly them cho ngoi vao sql
 
+
+        myListenner_bookingsSeats = new MyListenner_bookingsSeats() {
+            @Override
+            public ArrayList<String> onClickListener_bookingsSeats(detail_tickets detailTickets) throws IOException {
+
+                if(arrayList.size()==0){
+                    int idlocve =detailTickets.getId_tickets();
+                    arrayList.add(String.valueOf(idlocve));
+                }
+                arrayList.add(detailTickets.getIddetail_tickets()) ;
+                if(arrayList.size()!=0 && Integer.parseInt(arrayList.get(0)) != detailTickets.getId_tickets()){
+                    System.out.println("da thay doi loc ve");
+                    arrayList.removeAll(arrayList);
+                    System.out.println("sau khi da xoa het loc cu");
+                    if(arrayList.size()==0){
+                        arrayList.add(String.valueOf(detailTickets.getId_tickets()));
+                        arrayList.add(detailTickets.getIddetail_tickets());
+                    }
+                }
+                for (int i =1; i < arrayList.size();i++){
+                    int occurrences = Collections.frequency(arrayList, arrayList.get(i));
+                    System.out.println("do dai arraylist hien tai: "+arrayList.size());
+                    if(occurrences%2==0){
+                        arrayList.remove(i);
+                        for (int j =0; j<=arrayList.size();j++){
+                            if(detailTickets.getIddetail_tickets().equals(arrayList.get(j))==true){
+                                arrayList.remove(j);
+                                System.out.println("xoa lan 2");
+                            }
+                        }
+                        System.out.println("do dai da xoa het=" + arrayList.size());
+                    }
+                }
+                System.out.println(arrayList);
+                return arrayList;
             }
         };
 
+        //Xu ly them cho ngoi vao sql
 
+
+
+        // Xuat ra man hinh cac ve con kha dung
         try {
             for (int i = 0;i< bkS.detailTickets().size();i++){
                 Date date = new Date();
@@ -174,17 +246,6 @@ public class bookingsController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
