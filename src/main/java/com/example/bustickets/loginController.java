@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 public class loginController implements Initializable {
     final String secretKey = "12345678";
-
+    static String test;
     @FXML private Label LoginMessage;
     @FXML private Button btnCancelLogin;
     @FXML private TextField txtUsername;
