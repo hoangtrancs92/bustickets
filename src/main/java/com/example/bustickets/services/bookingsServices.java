@@ -1,11 +1,16 @@
 package com.example.bustickets.services;
 import com.example.bustickets.config.JdbcUtils;
+import com.example.bustickets.model.bookings;
+import com.example.bustickets.model.detail_tickets;
 import com.example.bustickets.model.tickets;
+import com.example.bustickets.model.users;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class bookingsServices {
     public ArrayList<tickets> detailTickets() throws SQLException{
@@ -31,4 +36,20 @@ public class bookingsServices {
         }
         return detail;
     }
+//    INSERT INTO bookings(code, status, users_id) VALUES ('?', '?', '?' )
+    public void addBookingUser(users customer, bookings booking) throws SQLException{
+        try {
+            Connection cnn = JdbcUtils.getCnn();
+            PreparedStatement stm1 = cnn.prepareStatement("INSERT INTO bookings(code, status, users_id) VALUES (?, ?, ?) ");
+            stm1.setString(1,booking.getCode());
+            stm1.setInt(2, booking.getStatus());
+            stm1.setInt(3,booking.getUsers_id());
+            stm1.executeUpdate();
+
+            stm1.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

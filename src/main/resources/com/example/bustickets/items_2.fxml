@@ -5,6 +5,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="34.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.items2Controller">
    <children>
-      <CheckBox fx:id="seat_checkbox" layoutX="2.0" layoutY="3.0" mnemonicParsing="false" stylesheets="@css/css_checkbox.css" />
+      <CheckBox fx:id="seat_checkbox" layoutX="2.0" layoutY="3.0" mnemonicParsing="false" onMousePressed="#click" stylesheets="@css/css_checkbox.css" />
    </children>
 </AnchorPane>

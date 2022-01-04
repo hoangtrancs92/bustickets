@@ -1,6 +1,7 @@
 package com.example.bustickets.services;
 
 import com.example.bustickets.config.JdbcUtils;
+import com.example.bustickets.model.bookings;
 import com.example.bustickets.model.cars;
 import com.example.bustickets.model.detail_tickets;
 import com.example.bustickets.model.tickets;
@@ -41,5 +42,14 @@ public class detailticketsServices {
             e.printStackTrace();
         }
         return detail;
+    }
+
+    // Cap nhat idbookings cua bang
+    public void updateDetailTickets(detail_tickets detailTickets, bookings booking) throws SQLException {
+        Connection cnn = JdbcUtils.getCnn();
+        PreparedStatement stm = cnn.prepareStatement("UPDATE detail_tickets SET id_bookings = '"+booking.getIdbookings()+"' WHERE (iddetail_tickets like concat('%','"+detailTickets.getIddetail_tickets()+"','%'))");
+        stm.setInt(3,booking.getIdbookings());
+        stm.executeUpdate();
+        stm.close();
     }
 }

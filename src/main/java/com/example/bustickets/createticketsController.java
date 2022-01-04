@@ -1,12 +1,7 @@
 package com.example.bustickets;
-import com.example.bustickets.model.detail_tickets;
+import com.example.bustickets.model.*;
 import com.example.bustickets.config.JdbcUtils;
-import com.example.bustickets.model.employees;
-import com.example.bustickets.model.cars;
-import com.example.bustickets.model.tickets;
-import com.example.bustickets.services.createticketsServices;
-import com.example.bustickets.services.detailticketsServices;
-import com.example.bustickets.services.employeeServices;
+import com.example.bustickets.services.*;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import com.example.bustickets.services.carServices;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -65,9 +60,15 @@ public class createticketsController implements Initializable {
     // viet code truy xuat sql tai day
 
     @FXML
+    private ComboBox<starting_points> StartPoint_cbbox;
+    @FXML
     private  ComboBox<cars> carsComboBox;
     @FXML
     private ComboBox<employees> employeesComboBox;
+    @FXML
+    private ComboBox<finishing_points> endPoint_cbbox;
+    @FXML
+    private ComboBox<time> time_comboBox;
     @FXML
     private TextField txt_giave;
     @FXML
@@ -75,9 +76,8 @@ public class createticketsController implements Initializable {
     @FXML
     private TextField txt_thoigiankhoihanh;
     @FXML
-    private TextField txt_diemdi;
-    @FXML
     private TextField txt_diemden;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // ComboBox cars
@@ -94,6 +94,28 @@ public class createticketsController implements Initializable {
         } catch (SQLException e) {
             Logger.getLogger(createticketsController.class.getName()).log(Level.SEVERE, (String) null);
         }
+        // ComboBox starting_point
+        startServices stS = new startServices();
+        try {
+            this.StartPoint_cbbox.setItems(FXCollections.observableList(stS.getPoint()));
+        } catch (SQLException e) {
+            Logger.getLogger(createticketsController.class.getName()).log(Level.SEVERE, (String) null);
+        }
+        //ComboBox finishing_point
+        finishServices fnS = new finishServices();
+        try {
+            this.endPoint_cbbox.setItems(FXCollections.observableList(fnS.getPointEnd()));
+        } catch (SQLException e) {
+            Logger.getLogger(createticketsController.class.getName()).log(Level.SEVERE, (String) null);
+        }
+        //ComboBox time
+        timeServices tm = new timeServices();
+        try {
+            this.time_comboBox.setItems(FXCollections.observableList(tm.getTime()));
+        } catch (SQLException e) {
+            Logger.getLogger(createticketsController.class.getName()).log(Level.SEVERE, (String) null);
+        }
+
 
     }
 
@@ -107,7 +129,7 @@ public class createticketsController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         //
         if (result.get() == ButtonType.OK){
-            tickets t = new tickets(this.txt_diemdi.getText(), this.txt_diemden.getText(),this.carsComboBox.getSelectionModel().getSelectedItem().getNumber_seat(), this.txt_ngaykhoihanh.getEditor().getText() ,this.txt_giave.getText(),this.employeesComboBox.getSelectionModel().getSelectedItem().getIdemployees(),this.txt_thoigiankhoihanh.getText(),this.carsComboBox.getSelectionModel().getSelectedItem().getIdcars());
+            tickets t = new tickets(this.StartPoint_cbbox.getSelectionModel().getSelectedItem().getStart(), this.endPoint_cbbox.getSelectionModel().getSelectedItem().getFinish(),this.carsComboBox.getSelectionModel().getSelectedItem().getNumber_seat(), this.txt_ngaykhoihanh.getEditor().getText() ,this.txt_giave.getText(),this.employeesComboBox.getSelectionModel().getSelectedItem().getIdemployees(),this.time_comboBox.getSelectionModel().getSelectedItem().getTime(),this.carsComboBox.getSelectionModel().getSelectedItem().getIdcars());
             createticketsServices ctS = new createticketsServices();
             try {
                 // add data to mysql

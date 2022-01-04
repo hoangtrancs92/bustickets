@@ -1,9 +1,10 @@
 .shadow{
-    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+            -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
 }
 .transparent{
     -fx-background-color: rgba(0,0,0,0);
 }
+ /*css ve xe*/
 .btnDatVe{
     -fx-font-weight: bold;
     -fx-background-color: white ;
@@ -21,4 +22,21 @@
     -fx-border-color: #475B90;
     -fx-border-width:3;
 
+}
+ /*css nut mua ve xe*/
+.btnMua{
+    -fx-font-weight: bold;
+    -fx-background-color: white ;
+    -fx-font-size:16;
+    -fx-border-color: #636e72;
+    -fx-text-fill: #636e72;
+    -fx-opacity: 0;
+}
+.btnMua:hover{
+    -fx-font-weight: bold;
+    -fx-background-color: #636e72;
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+    -fx-border-color: #636e72;
+    -fx-effect: dropShadow(three-pass-box,rgba(178,190,195), 70.0 , 0.0 , 0.0 ,0.0);
 }
