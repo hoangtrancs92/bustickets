@@ -18,7 +18,7 @@ public class employeeServices {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM  employees");
             while (rs.next()){
-                employees info_employees = new employees(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5));
+                employees info_employees = new employees(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6));
                 result.add( info_employees);
             }
             rs.close();
