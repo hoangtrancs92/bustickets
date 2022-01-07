@@ -1,6 +1,7 @@
 package com.example.bustickets;
 import com.example.bustickets.model.detail_tickets;
 import com.example.bustickets.model.tickets;
+import com.example.bustickets.model.users;
 import com.example.bustickets.services.bookingsServices;
 import com.example.bustickets.services.detailticketsServices;
 import javafx.event.ActionEvent;
@@ -12,12 +13,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -29,65 +30,137 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class bookingsController implements Initializable {
+
+    //Hiển thị và lấy dữ liệu user
+    @FXML
+    private Label lblName;
+    @FXML
+    private Label lblID;
+    @FXML
+    private Button createTickets_button;
+    @FXML
+    private Button managerUser_button;
+    @FXML
+    private Button managerEmploy_button;
+    @FXML
+    private Button managerTicket_button;
+    @FXML
+    private GridPane grid;
+    @FXML
+    private GridPane seat_grid;
+    @FXML
+    private ScrollPane scroll;
+    @FXML
+    private Button muave_button;
+
+
+    private Mylistener mylistener;
+    private MyListenner_bookingsSeats myListenner_bookingsSeats;
+
+    users user = new users();
+
+    public void getUser(users u){
+        user.setIdusers(u.getIdusers());
+        user.setName(u.getName());
+        user.setAddress(u.getAddress());
+        user.setSex(u.getSex());
+        user.setEmail(u.getEmail());
+        user.setBirthday(u.getBirthday());
+        user.setPhone(u.getPhone());
+        user.setRole(u.getRole());
+
+        if(user.getRole() == 1){
+            createTickets_button.setDisable(true);
+            createTickets_button.setStyle("-fx-opacity: 0");
+            managerTicket_button.setDisable(true);
+            managerTicket_button.setStyle("-fx-opacity:0");
+            managerUser_button.setDisable(true);
+            managerUser_button.setStyle("-fx-opacity: 0");
+            managerEmploy_button.setDisable(true);
+            managerEmploy_button.setStyle("-fx-opacity: 0");
+            lblName.setText("Name " + u.getName());
+            lblID.setText(String.valueOf("ID: " + u.getIdusers()));
+        }else if(user.getRole() == 2){
+            managerUser_button.setDisable(true);
+            managerUser_button.setStyle("-fx-opacity: 0");
+            managerEmploy_button.setDisable(true);
+            managerEmploy_button.setStyle("-fx-opacity: 0");
+            lblName.setText("Name " + u.getName());
+            lblID.setText(String.valueOf("ID: " + u.getIdusers()));
+        }else{
+            lblName.setText("Name " + u.getName());
+            lblID.setText(String.valueOf("ID: " + u.getIdusers()));;}
+    }
+
+    //Nút đăng xuất
+    public void Logout(ActionEvent event) throws IOException {
+        fxmlLoader = FXMLLoader.load(getClass().getResource("login.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(fxmlLoader);
+        stage.setScene(scene);
+        stage.show();
+    }
     // Chuyển đổi screen ( chuyển đổi giữa các file fxml )
     private Stage stage;
     private Scene scene;
     private Parent fxmlLoader;
+
     // Chuyển sang manager_ticket.fxml
     public void switchToManager_tickets(ActionEvent event) throws IOException {
-        fxmlLoader = FXMLLoader.load(getClass().getResource("manager_tickets.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("manager_tickets.fxml"));
+        Parent userViewParent = loader.load();
+        Scene scene = new Scene(userViewParent);
+        stage.setScene(scene);
+        managerticketsController controller = loader.getController();
+        controller.getUser(user);
         stage.setScene(scene);
         stage.show();
     }
     // Chuyển sang manage_employees.fxml
     public void switchToManage_employees(ActionEvent event) throws IOException {
-        fxmlLoader = FXMLLoader.load(getClass().getResource("manage_employees.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("manage_employees.fxml"));
+        Parent userViewParent = loader.load();
+        Scene scene = new Scene(userViewParent);
+        stage.setScene(scene);
+        manageremployeesController controller = loader.getController();
+        controller.getUser(user);
         stage.setScene(scene);
         stage.show();
     }
     // Chuyển sang manage_users.fxml
     public void switchToManage_users(ActionEvent event) throws IOException {
-        fxmlLoader = FXMLLoader.load(getClass().getResource("manage_users.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("manage_users.fxml"));
+        Parent userViewParent = loader.load();
+        Scene scene = new Scene(userViewParent);
+        stage.setScene(scene);
+        manageruserController controller = loader.getController();
+        controller.getUser(user);
         stage.setScene(scene);
         stage.show();
     }
-    // Chuyển sang Create_tickets.fxml
+    // Chuyển sang create_tickets.fxml
     public void switchToCreate_tickets(ActionEvent event) throws IOException {
-        fxmlLoader = FXMLLoader.load(getClass().getResource("create_tickets.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("create_tickets.fxml"));
+        Parent userViewParent = loader.load();
+        Scene scene = new Scene(userViewParent);
+        stage.setScene(scene);
+        createticketsController controller = loader.getController();
+        controller.getUser(user);
         stage.setScene(scene);
         stage.show();
     }
     // viet code truy xuat sql tai day
 
     @FXML
-    private GridPane grid;
-
-    @FXML
-    private GridPane seat_grid;
-
-    @FXML
-    private ScrollPane scroll;
-
-    @FXML
-    private Button muave_button;
-
-    @FXML
-    private Button test_button;
-
-    private Mylistener mylistener;
-    private MyListenner_bookingsSeats myListenner_bookingsSeats;
-
-    @FXML
     void themchongoi_button(ActionEvent event) throws IOException {
-
 
         detail_tickets dt = new detail_tickets();
 //        ArrayList<String> cloneArraylist;
@@ -103,13 +176,7 @@ public class bookingsController implements Initializable {
     ///   ********* /////
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        int so1 = 1; // la user
-//        int so2 = 2; // la admin
-//        int so3 = 3; // la nhan vien
-//        if(so1 ==1){
-//            test_button.setDisable(true);
-//            test_button.setStyle("-fx-opacity: 0");
-//        }
+
         int column = -1;
         int row = 1;
 
@@ -246,6 +313,7 @@ public class bookingsController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
 
 }

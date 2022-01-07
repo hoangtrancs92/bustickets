@@ -34,7 +34,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="-5.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToManage_employees" prefHeight="90.0" prefWidth="245.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Nhân viên">
+                <Button fx:id="managerEmploy_button" layoutX="-5.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToManage_employees" prefHeight="90.0" prefWidth="245.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Nhân viên">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -31;">
                             <image>
@@ -49,7 +49,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="-5.0" layoutY="90.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Tạo vé" textAlignment="JUSTIFY" textFill="WHITE">
+                <Button fx:id="createTickets_button" layoutX="-5.0" layoutY="90.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Tạo vé" textAlignment="JUSTIFY" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -45;">
                             <image>
@@ -64,7 +64,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="-6.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchToManager_tickets" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý vé" textAlignment="JUSTIFY">
+                <Button fx:id="managerTicket_button" layoutX="-6.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchToManager_tickets" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý vé" textAlignment="JUSTIFY">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -30;">
                             <image>
@@ -79,7 +79,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button layoutX="-6.0" layoutY="270.0" mnemonicParsing="false" onAction="#switchToManage_users" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý user">
+                <Button fx:id="managerUser_button" layoutX="-6.0" layoutY="270.0" mnemonicParsing="false" onAction="#switchToManage_users" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý user">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -23;">
                             <image>
@@ -94,6 +94,14 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
+            <Button layoutY="550.0" mnemonicParsing="false" onAction="#Logout" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: none;" text="Đăng xuất">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             </children></Pane>
     </left>
     <top>
@@ -120,6 +128,16 @@
                         <Font name="Arial" size="24.0" />
                     </font>
                 </Label>
+            <Label fx:id="lblName" layoutX="1171.0" layoutY="14.0" text="Name">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblID" layoutX="1171.0" layoutY="50.0" text="ID">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             </children></Pane>
     </top>
     <center>
@@ -162,7 +180,10 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_giave" prefHeight="40.0" prefWidth="334.0" promptText="VNĐ" style="-fx-border-color: #475B90; -fx-border-radius: 10; -fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_giave" prefHeight="40.0" prefWidth="334.0" promptText="VNĐ" style="-fx-border-color: #475B90; -fx-border-radius: 10; -fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
                   <Button mnemonicParsing="false" onAction="#addTickets" prefHeight="60.0" prefWidth="206.0" styleClass="btnThem" stylesheets="@css/css_createTickets.css" text="Thêm" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <cursor>
                         <Cursor fx:constant="HAND" />

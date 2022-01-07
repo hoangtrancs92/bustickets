@@ -14,10 +14,37 @@ public class users {
     private String address;
     private int sex;
     private String birthday;
+    private int role;
 
     //public users(TextField usernameField, PasswordField passwordField, TextField emailField, TextField phoneField, TextField addressField, DatePicker birthday, int sex) {}
 
-    public users(int idusers, String name, String password,String email, String phone, String address, String birthday, int sex){
+
+    public users() {
+    }
+
+    public users(int idusers, String name, String email, String phone, String address, int sex, String birthday, int role) {
+        this.idusers = idusers;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.role = role;
+    }
+
+    public users(int idusers, String name) {
+        this.idusers = idusers;
+        this.name = name;
+    }
+
+    public users(int idusers, String name, int role) {
+        this.idusers = idusers;
+        this.name = name;
+        this.role = role;
+    }
+
+    public users(int idusers, String name, String password, String email, String phone, String address, String birthday, int sex, int role){
         this.idusers = idusers;
         this.name = name;
         this.password = password;
@@ -26,6 +53,7 @@ public class users {
         this.address = address;
         this.birthday = birthday;
         this.sex = sex;
+        this.role = role;
     }
     public users(String name, String password, String email, String phone, String address, String birthday, int sex){
         this.name = name;
@@ -112,5 +140,12 @@ public class users {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 }

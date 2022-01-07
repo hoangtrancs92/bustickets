@@ -6,17 +6,19 @@ public class employees {
     private String email;
     private String password;
     private int stores_id;
+    private int role;
 
     public employees(){
 
     }
 
-    public employees(int idemployees,String name, String email, String password, int stores_id){
+    public employees(int idemployees,String name, String email, String password, int stores_id, int role){
         this.idemployees = idemployees;
         this.name = name;
         this.email = email;
         this.password = password;
         this.stores_id = stores_id;
+        this.role = role;
     }
 
     @Override
@@ -62,5 +64,13 @@ public class employees {
 
     public void setStores_id(int stores_id) {
         this.stores_id = stores_id;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 }
