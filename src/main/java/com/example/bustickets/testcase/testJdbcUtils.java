@@ -1,8 +1,11 @@
+package com.example.bustickets.testcase;
+
 import com.example.bustickets.config.JdbcUtils;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,6 +30,7 @@ public class testJdbcUtils {
     }
     @Test
     public void testUnique() throws SQLException{
+        cnn = JdbcUtils.getCnn();
         Statement stm = cnn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * from cars");
         List<String> kq = new ArrayList<>();

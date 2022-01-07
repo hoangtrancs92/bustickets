@@ -2,6 +2,8 @@ package com.example.bustickets;
 import com.example.bustickets.model.*;
 import com.example.bustickets.config.JdbcUtils;
 import com.example.bustickets.services.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -116,8 +118,22 @@ public class createticketsController implements Initializable {
             Logger.getLogger(createticketsController.class.getName()).log(Level.SEVERE, (String) null);
         }
 
+        // force the field to be numeric only
+        // Chặn chữ trong text field
+        this.txt_giave.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    txt_giave.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
 
     }
+
+
+
 
 
     public void addTickets(ActionEvent event) throws SQLException {
