@@ -1,9 +1,14 @@
 package com.example.bustickets;
+import com.example.bustickets.model.bookings;
 import com.example.bustickets.model.detail_tickets;
 import com.example.bustickets.model.tickets;
 import com.example.bustickets.model.users;
 import com.example.bustickets.services.bookingsServices;
 import com.example.bustickets.services.detailticketsServices;
+import com.example.bustickets.services.userServices;
+import com.example.bustickets.alerts.alert;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +17,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -24,10 +27,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.time.LocalTime;
+import java.util.*;
 
 public class bookingsController implements Initializable {
 
@@ -52,14 +53,17 @@ public class bookingsController implements Initializable {
     private ScrollPane scroll;
     @FXML
     private Button muave_button;
-
+    @FXML
+    private TextField txt_sdt;
+    @FXML
+    private TextField txt_ten;
 
     private Mylistener mylistener;
     private MyListenner_bookingsSeats myListenner_bookingsSeats;
 
     users user = new users();
 
-    public void getUser(users u){
+    public users getUser(users u){
         user.setIdusers(u.getIdusers());
         user.setName(u.getName());
         user.setAddress(u.getAddress());
@@ -89,7 +93,8 @@ public class bookingsController implements Initializable {
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else{
             lblName.setText("Name " + u.getName());
-            lblID.setText(String.valueOf("ID: " + u.getIdusers()));;}
+            lblID.setText(String.valueOf("ID: " + u.getIdusers()));;};
+        return user;
     }
 
     //Nút đăng xuất
@@ -158,17 +163,88 @@ public class bookingsController implements Initializable {
         stage.show();
     }
     // viet code truy xuat sql tai day
-
+    // nut them cho ngoi bao gom kiem tra role, user, admin, employees
     @FXML
-    void themchongoi_button(ActionEvent event) throws IOException {
+    void themchongoi_button(ActionEvent event) throws IOException, SQLException, InterruptedException {
+        System.out.println(arrayList.size());
+        alert al = new alert();
+        if(arrayList.size() > 0){
+            if(user.getRole() == 1){
+                bookingsServices bkS = new bookingsServices();
+                bookings bk = new bookings(UUID.randomUUID().toString(),1,user.getIdusers());
+                bkS.addBookingUser(bk);
+                Thread.sleep(500);
+                for(int i = 1; i < arrayList.size();i++){
+                    System.out.println("da vao");
+                    System.out.println(arrayList.get(i));
+                    System.out.println("tiep theo");
+                    System.out.println("Controller" +bkS.getBookings());
+                    detailticketsServices dtS = new detailticketsServices();
+                    detail_tickets dt = new detail_tickets(arrayList.get(i));
+                    dtS.updateDetailTickets(dt,bkS.getBookings());
+                    System.out.println("thanh cong");
+                }
+                al.showAlertWithHeaderText("Mã đặt chỗ của bạn: " + bkS.getBookings());
+                Thread.sleep(500);
+                // load lai trang
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("bookings_tickets.fxml"));
+                Parent userViewParent = loader.load();
+                Scene scene = new Scene(userViewParent);
+                stage.setScene(scene);
+                bookingsController controller = loader.getController();
+                controller.getUser(user);
+                stage.setScene(scene);
+                stage.show();
+            }
+            if((user.getRole() == 3 || user.getRole() == 2) && arrayList.size()>1){
+                if (txt_ten.getText().isEmpty() ==false && txt_sdt.getText().isEmpty() == false ){
+                    users us = new users();
+                    us.setName(txt_ten.getText());
+                    us.setPhone(txt_sdt.getText());
+                    userServices usS = new userServices();
+                    usS.addUserOffline(us);
+                    Thread.sleep(1000);
+                    bookingsServices bkS = new bookingsServices();
+                    bookings bk = new bookings(UUID.randomUUID().toString(),1,usS.getMaxIdUsers());
+                    bkS.addBookingUser(bk);
+                    System.out.println("gia tri getMaxIdUser = "+usS.getMaxIdUsers());
+                    for(int i = 1; i < arrayList.size();i++){
+                        System.out.println("da vao");
+                        System.out.println(arrayList.get(i));
+                        System.out.println("tiep theo");
+                        System.out.println("Controller" +bkS.getBookings());
+                        detailticketsServices dtS = new detailticketsServices();
+                        detail_tickets dt = new detail_tickets(arrayList.get(i));
+                        dtS.updateDetailTickets(dt,bkS.getBookings());
+                        System.out.println("thanh cong (admin,empolyees)");
+                    }
+                    al.showAlertWithHeaderText("Mã đặt chỗ của bạn: " + bkS.getBookings());
+                    Thread.sleep(500);
+                    // load lai trang
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("bookings_tickets.fxml"));
+                    Parent userViewParent = loader.load();
+                    Scene scene = new Scene(userViewParent);
+                    stage.setScene(scene);
+                    bookingsController controller = loader.getController();
+                    controller.getUser(user);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+                else {
+                    al.showAlertWithWarningHeaderText();
+                }
+            }
+        }
+        else{
+            al.showAlertWithWarningHeaderText();
+        }
 
-        detail_tickets dt = new detail_tickets();
-//        ArrayList<String> cloneArraylist;
-//        cloneArraylist = myListenner_bookingsSeats.onClickListener_bookingsSeats(dt);
-        System.out.println("enter");
-//        for(int i =1;i <=cloneArraylist.size()-1;i++){
-//            System.out.println(cloneArraylist.get(i));
-//        }
+
+
         System.out.println("S ="+arrayList);
     }
     ///   ********* /////
@@ -177,9 +253,29 @@ public class bookingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        // khóa điền chữ trong ô txt_sdt
+        this.txt_sdt.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    txt_sdt.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        // khóa điền số ( number ) trong ô txt_ten
+        this.txt_ten.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (newValue.matches("\\d*")==true) {
+                    txt_ten.setText(newValue.replaceAll("[^a-zA-Z]", ""));
+                }
+            }
+        });
+        // Xu ly import item.fxml va item2.fxml
         int column = -1;
         int row = 1;
-
         bookingsServices bkS = new bookingsServices();
         detailticketsServices dtK = new detailticketsServices();
         // Xu ly su kien click ve
@@ -270,13 +366,11 @@ public class bookingsController implements Initializable {
         };
 
         //Xu ly them cho ngoi vao sql
-
-
-
         // Xuat ra man hinh cac ve con kha dung
         try {
             for (int i = 0;i< bkS.detailTickets().size();i++){
                 Date date = new Date();
+                System.out.println(date);
                 String dateS = bkS.detailTickets().get(i).getDate_start();
                 Date date_start = new SimpleDateFormat("dd/MM/yyyy").parse(dateS);
                 FXMLLoader fxmlLoader = new FXMLLoader();

@@ -164,8 +164,8 @@
                <children>
                   <Pane prefHeight="39.0" prefWidth="388.0">
                      <children>
-                        <TextField layoutY="7.0" />
-                        <TextField layoutX="228.0" layoutY="7.0" />
+                        <TextField fx:id="txt_ten" layoutY="7.0" />
+                        <TextField fx:id="txt_sdt" layoutX="228.0" layoutY="7.0" />
                      </children></Pane>
                   <ScrollPane prefHeight="409.0" prefWidth="388.0">
                      <content>

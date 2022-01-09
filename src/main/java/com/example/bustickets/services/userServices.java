@@ -1,6 +1,7 @@
 package com.example.bustickets.services;
 
 import com.example.bustickets.config.JdbcUtils;
+import com.example.bustickets.model.tickets;
 import com.example.bustickets.model.users;
 
 import java.sql.*;
@@ -27,6 +28,19 @@ public class userServices {
         }
 
     }
+    public void addUserOffline(users us) throws  SQLException{
+        try {
+            Connection cnn = JdbcUtils.getCnn();
+            PreparedStatement stm1 = cnn.prepareStatement("INSERT INTO users(name,phone,role) values (?,?,'1')");
+            stm1.setString(1,us.getName());
+            stm1.setString(2,us.getPhone());
+            stm1.executeUpdate();
+            stm1.close();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
     public List<users> getUser() throws SQLException{
         List<users> result = new ArrayList<>();
         try(Connection cnn = JdbcUtils.getCnn()){
@@ -44,4 +58,20 @@ public class userServices {
             return result;
 
     }
+    public int  getMaxIdUsers(){
+        int id = 0;
+        try {
+            Connection cnn = JdbcUtils.getCnn();
+            ResultSet rs = cnn.createStatement().executeQuery("SELECT MAX(iduser) FROM users");
+            while (rs.next()){
+//                arrayList.add(new tickets(rs.getInt(1)));
+                id = rs.getInt(1);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return id;
+    }
+
 }

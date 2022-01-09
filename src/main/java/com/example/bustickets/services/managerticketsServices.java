@@ -16,8 +16,8 @@ public class managerticketsServices {
         ObservableList<tickets> result = FXCollections.observableArrayList();
         try {
             Connection cnn = JdbcUtils.getCnn();
-            ResultSet rs = cnn.createStatement().executeQuery(" select tickets.*, employees.name, cars.code_car from tickets, " +
-                    "employees, cars where employees.idemployees = tickets.employees_id and cars.idcars = tickets.cars_id");
+            ResultSet rs = cnn.createStatement().executeQuery(" select tickets.*, users.name, cars.code_car from tickets, " +
+                    "users, cars where users.iduser = tickets.users_id and cars.idcars = tickets.cars_id");
 
             while (rs.next()){
                 result.add(new tickets(
@@ -27,7 +27,7 @@ public class managerticketsServices {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(5),
-                        rs.getString(8),
+                        rs.getString(7),
                         rs.getString(11)
                         ));
             }

@@ -43,12 +43,15 @@ public class detailticketsServices {
         }
         return detail;
     }
+//    PreparedStatement stm = cnn.prepareStatement("UPDATE detail_tickets SET id_bookings = '"+booking.getIdbookings()+"' WHERE (iddetail_tickets like concat('%','"+detailTickets.getIddetail_tickets()+"','%'))");
 
     // Cap nhat idbookings cua bang
-    public void updateDetailTickets(detail_tickets detailTickets, bookings booking) throws SQLException {
+    public void updateDetailTickets(detail_tickets detailTickets, int idbooking) throws SQLException {
         Connection cnn = JdbcUtils.getCnn();
-        PreparedStatement stm = cnn.prepareStatement("UPDATE detail_tickets SET id_bookings = '"+booking.getIdbookings()+"' WHERE (iddetail_tickets like concat('%','"+detailTickets.getIddetail_tickets()+"','%'))");
-        stm.setInt(3,booking.getIdbookings());
+        System.out.println("test 2 = "+detailTickets.getIddetail_tickets());
+
+        PreparedStatement stm = cnn.prepareStatement("UPDATE detail_tickets SET id_bookings = '"+idbooking+"' WHERE (iddetail_tickets ='"+detailTickets.getIddetail_tickets()+"')");
+
         stm.executeUpdate();
         stm.close();
     }

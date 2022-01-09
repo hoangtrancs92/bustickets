@@ -1,7 +1,10 @@
 package com.example.bustickets;
 
+import com.example.bustickets.services.detailticketsServices;
+import com.example.bustickets.services.managerticketsServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import com.example.bustickets.model.tickets;
@@ -11,12 +14,15 @@ import org.w3c.dom.events.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.ResourceBundle;
 
-public class itemsController {
+public class itemsController implements Initializable {
 
     @FXML
     public Label carHeader_label;
@@ -45,11 +51,12 @@ public class itemsController {
     }
 
     private tickets ticket;
+    private tickets ticket_test;
     Mylistener mylistener;
 
     public String car_1 = "59OU001";
     public String car_2 = "59OU002";
-    public void setData(tickets ticket,Mylistener mylistener) throws FileNotFoundException, ParseException {
+    public void setData(tickets ticket,Mylistener mylistener) throws FileNotFoundException, ParseException, SQLException {
         this.ticket = ticket;
         this.mylistener = mylistener;
             if (ticket.getCode_car().equals(car_1)) {
@@ -91,4 +98,9 @@ public class itemsController {
             }
 
         }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
