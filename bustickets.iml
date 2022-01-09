@@ -6,9 +6,6 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/java/com/example/bustickets/testcase" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/java/com/example/bustickets/testpackage" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/testcase" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/testpackage" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
@@ -17,10 +14,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:17.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:mac:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:mac:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:mac:17.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:17.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:mac:17.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.1" level="project" />
@@ -33,5 +26,10 @@
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.11.4" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.13.2" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:mac:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:mac:17.0.1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

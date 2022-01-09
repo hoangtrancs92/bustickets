@@ -13,7 +13,7 @@ public class tickets  extends cars{
     private String date_start;
     private String time_start;
     private String code_car;
-    private int employees_id;
+    private int users_id;
     private int cars_id;
     private LocalDate time;
     // --- Constructor ---
@@ -57,13 +57,13 @@ public class tickets  extends cars{
         this.code_car = code_car;
     }
     // Create_tickets
-    public tickets(String location_start, String location_end,int quanlity, String date_start, String price, int employees_id, String time_start, int cars_id){
+    public tickets(String location_start, String location_end,int quanlity, String date_start, String price, int users_id, String time_start, int cars_id){
         this.location_start = location_start;
         this.location_end = location_end;
         this.quanlity = quanlity;
         this.date_start = date_start;
         this.price = price;
-        this.employees_id = employees_id;
+        this.users_id = users_id;
         this.time_start = time_start;
         this.cars_id = cars_id;
     }
@@ -171,12 +171,13 @@ public class tickets  extends cars{
     }
 
     //Setter and getter employee_id
-    public int getEmployees_id() {
-        return employees_id;
+
+    public int getUsers_id() {
+        return users_id;
     }
 
-    public void setEmployees_id(int employees_id) {
-        this.employees_id = employees_id;
+    public void setUsers_id(int users_id) {
+        this.users_id = users_id;
     }
 
     //Setter and getter cars_id

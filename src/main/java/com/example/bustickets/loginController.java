@@ -47,7 +47,7 @@ public class loginController implements Initializable {
             Connection conn = JdbcUtils.getCnn();
             try {
                 Statement stm = conn.createStatement();
-                ResultSet rs = stm.executeQuery("SELECT * FROM users");
+                ResultSet rs = stm.executeQuery("SELECT users.* FROM bustickets_db.users WHERE users.password is not null");
                 while (rs.next()) {
                     String password = rs.getString("password");
                     password = AES.decrypt(password, secretKey);

@@ -43,7 +43,11 @@ public class users {
         this.name = name;
         this.role = role;
     }
-
+    public users(int idusers, String name, String email){
+        this.idusers = idusers;
+        this.name = name;
+        this.email = email;
+    }
     public users(int idusers, String name, String password, String email, String phone, String address, String birthday, int sex, int role){
         this.idusers = idusers;
         this.name = name;
@@ -67,16 +71,8 @@ public class users {
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat(("dd/MM/yyyy"));
-        return "users{" +
-                "idusers=" + idusers +
-                ", name='" + name + '-' +
-                ", email='" + email + '-' +
-                ", phone='" + phone + '-' +
-                ", address='" + address + '-' +
-                ", sex=" + sex +
-                ", birthday=" + sdf.format(birthday) +
-                '}';
+        return name;
+
     }
 
     public String getPassword(){

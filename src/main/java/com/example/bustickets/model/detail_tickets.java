@@ -12,15 +12,17 @@ public class detail_tickets {
         this.id_bookings = id_bookings;
     }
 
-    public detail_tickets(String iddetail_tickets, int id_tickets) {
+    public detail_tickets(String iddetail_tickets, int id_bookings) {
         this.iddetail_tickets = iddetail_tickets;
-        this.id_tickets = id_tickets;
+        this.id_tickets = id_bookings;
     }
+    public detail_tickets(String iddetail_tickets) {
+        this.iddetail_tickets = iddetail_tickets;
 
+    }
     public detail_tickets() {
 
     }
-
 
     // Constructor
     public String getIddetail_tickets() {
