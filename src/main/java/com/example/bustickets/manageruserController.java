@@ -48,17 +48,17 @@ public class manageruserController {
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else if(user.getRole() == 2){
             managerUser_button.setDisable(true);
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else{
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));;}
 
     }
