@@ -82,17 +82,17 @@ public class bookingsController implements Initializable {
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else if(user.getRole() == 2){
             managerUser_button.setDisable(true);
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else{
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));;};
         return user;
     }
@@ -173,7 +173,7 @@ public class bookingsController implements Initializable {
                 bookingsServices bkS = new bookingsServices();
                 bookings bk = new bookings(UUID.randomUUID().toString(),1,user.getIdusers());
                 bkS.addBookingUser(bk);
-                Thread.sleep(500);
+                Thread.sleep(100);
                 for(int i = 1; i < arrayList.size();i++){
                     System.out.println("da vao");
                     System.out.println(arrayList.get(i));
@@ -184,8 +184,8 @@ public class bookingsController implements Initializable {
                     dtS.updateDetailTickets(dt,bkS.getBookings());
                     System.out.println("thanh cong");
                 }
-                al.showAlertWithHeaderText("Mã đặt chỗ của bạn: " + bkS.getBookings());
-                Thread.sleep(500);
+                al.showAlertWithHeaderText("Mã đặt chỗ của bạn: " + bkS.getBookings() +'\n'+"alo alo");
+                Thread.sleep(100);
                 // load lai trang
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader();
@@ -205,7 +205,7 @@ public class bookingsController implements Initializable {
                     us.setPhone(txt_sdt.getText());
                     userServices usS = new userServices();
                     usS.addUserOffline(us);
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                     bookingsServices bkS = new bookingsServices();
                     bookings bk = new bookings(UUID.randomUUID().toString(),1,usS.getMaxIdUsers());
                     bkS.addBookingUser(bk);
@@ -221,7 +221,7 @@ public class bookingsController implements Initializable {
                         System.out.println("thanh cong (admin,empolyees)");
                     }
                     al.showAlertWithHeaderText("Mã đặt chỗ của bạn: " + bkS.getBookings());
-                    Thread.sleep(500);
+                    Thread.sleep(100);
                     // load lai trang
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     FXMLLoader loader = new FXMLLoader();

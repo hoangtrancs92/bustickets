@@ -25,3 +25,15 @@
     -fx-background-color: #334169;
     -fx-cursor: hand;
 }
+.name_user {
+    -fx-background-color: linear-gradient(to left bottom,#475B90,#ffff);
+    -fx-text-fill: #ffff;
+}
+.id_user{
+    -fx-background-color: linear-gradient(to left bottom,#475B90, #ffff);
+    -fx-text-fill: #ffff;
+}
+.btn_xemve{
+    -fx-background-color: linear-gradient(to left bottom,#475B90, #ffff);
+    -fx-text-fill: #ffff;
+}

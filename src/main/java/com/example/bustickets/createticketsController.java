@@ -46,6 +46,8 @@ public class createticketsController implements Initializable {
     private Button managerEmploy_button;
     @FXML
     private Button managerTicket_button;
+    @FXML
+    private TextField txt_nhanvien;
     users user = new users();
 
     public void getUser(users u){
@@ -68,17 +70,22 @@ public class createticketsController implements Initializable {
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else if(user.getRole() == 2){
             managerUser_button.setDisable(true);
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
+            txt_nhanvien.setText(u.getName());
+            txt_nhanvien.setDisable(true);
+
         }else{
-            lblName.setText("Name " + u.getName());
+            txt_nhanvien.setText(u.getName());
+            txt_nhanvien.setDisable(true);
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));;}
     }
     //Nút đăng xuất
@@ -150,8 +157,6 @@ public class createticketsController implements Initializable {
     @FXML
     private  ComboBox<cars> carsComboBox;
     @FXML
-    private ComboBox<users> employeesComboBox;
-    @FXML
     private ComboBox<finishing_points> endPoint_cbbox;
     @FXML
     private ComboBox<time> time_comboBox;
@@ -162,6 +167,7 @@ public class createticketsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         // ComboBox cars
         carServices s = new carServices();
         try {
@@ -169,13 +175,7 @@ public class createticketsController implements Initializable {
         } catch (SQLException e) {
             Logger.getLogger(createticketsController.class.getName()).log(Level.SEVERE, (String) null);
         }
-        // ComboBox employee
-        employeeServices eS = new employeeServices();
-        try {
-            this.employeesComboBox.setItems(FXCollections.observableList(eS.getEmployees()));
-        } catch (SQLException e) {
-            Logger.getLogger(createticketsController.class.getName()).log(Level.SEVERE, (String) null);
-        }
+
         // ComboBox starting_point
         startServices stS = new startServices();
         try {
@@ -233,7 +233,7 @@ public class createticketsController implements Initializable {
         //
         if (result.get() == ButtonType.OK){
             if(date_start.after(date)){
-                tickets t = new tickets(this.StartPoint_cbbox.getSelectionModel().getSelectedItem().getStart(), this.endPoint_cbbox.getSelectionModel().getSelectedItem().getFinish(),this.carsComboBox.getSelectionModel().getSelectedItem().getNumber_seat(), this.txt_ngaykhoihanh.getEditor().getText() ,this.txt_giave.getText(),this.employeesComboBox.getSelectionModel().getSelectedItem().getIdusers(),this.time_comboBox.getSelectionModel().getSelectedItem().getTime(),this.carsComboBox.getSelectionModel().getSelectedItem().getIdcars());
+                tickets t = new tickets(this.StartPoint_cbbox.getSelectionModel().getSelectedItem().getStart(), this.endPoint_cbbox.getSelectionModel().getSelectedItem().getFinish(),this.carsComboBox.getSelectionModel().getSelectedItem().getNumber_seat(), this.txt_ngaykhoihanh.getEditor().getText() ,this.txt_giave.getText(),user.getIdusers(),this.time_comboBox.getSelectionModel().getSelectedItem().getTime(),this.carsComboBox.getSelectionModel().getSelectedItem().getIdcars());
                 createticketsServices ctS = new createticketsServices();
                 try {
                     // add data to mysql
@@ -258,13 +258,12 @@ public class createticketsController implements Initializable {
                     }
 
                 }
-                Thread.sleep(1000);
+                Thread.sleep(100);
                 System.out.println("SUCCESSFUL");
                 txt_giave.clear();
                 StartPoint_cbbox.valueProperty().set(null);
                 txt_ngaykhoihanh.valueProperty().set(null);
                 carsComboBox.valueProperty().set(null);
-                employeesComboBox.valueProperty().set(null);
                 endPoint_cbbox.valueProperty().set(null);
                 time_comboBox.valueProperty().set(null);
             }

@@ -39,7 +39,7 @@ public class manageremployeesController {
         user.setBirthday(u.getBirthday());
         user.setPhone(u.getPhone());
         user.setRole(u.getRole());
-        lblName.setText("Name " + u.getName());
+        lblName.setText( u.getName());
         lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         if(user.getRole() == 1){
             createTickets_button.setDisable(true);
@@ -50,17 +50,17 @@ public class manageremployeesController {
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else if(user.getRole() == 2){
             managerUser_button.setDisable(true);
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else{
-            lblName.setText("Name " + u.getName());
+            lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));;}
     }
     //Nút đăng xuất
