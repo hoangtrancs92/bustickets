@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1400" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.managerusercontroller">
+    <left>
+        <Pane prefHeight="677.0" prefWidth="241.0" styleClass="menu" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="-6.0" mnemonicParsing="false" onAction="#switchToBookings_tickets" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90 #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Đặt vé" textFill="#f2f0f0">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -45;">
+                            <image>
+                                <Image url="@img/home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button layoutX="-5.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToManage_employees" prefHeight="90.0" prefWidth="245.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Nhân viên">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -31;">
+                            <image>
+                                <Image url="@img/employee.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button layoutX="-5.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCreate_tickets" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Tạo vé" textAlignment="JUSTIFY" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -45;">
+                            <image>
+                                <Image url="@img/ticket.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button layoutX="-6.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchToManager_tickets" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý vé" textAlignment="JUSTIFY">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -30;">
+                            <image>
+                                <Image url="@img/manage_tickets.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button layoutX="-6.0" layoutY="270.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý user">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -23;">
+                            <image>
+                                <Image url="@img/user.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children></Pane>
+    </left>
+    <top>
+        <Pane prefHeight="107.0" prefWidth="1400.0" style="-fx-border-color: white; -fx-background-color: white;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
+            <children>
+                <Pane layoutX="1.0" layoutY="1.0" prefHeight="105.0" prefWidth="240.0" style="-fx-background-color: #B3CDE9#B3CDE9;">
+                    <children>
+                        <Label layoutX="10.0" layoutY="16.0" text="OUBus" textFill="#475b90">
+                            <font>
+                                <Font name="Tahoma" size="28.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="73.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: 5;">
+                                    <image>
+                                        <Image url="@img/logo.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                    </children>
+                </Pane>
+                <Label layoutX="282.0" layoutY="45.0" text="Quản lý khách hàng">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children></Pane>
+    </top>
+    <center>
+        <Pane prefHeight="426.0" prefWidth="1159.0" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableView" prefHeight="594.0" prefWidth="1158.0">
+              <columns>
+                <TableColumn fx:id="col_iduser" prefWidth="75.0" text="iduser" />
+                <TableColumn fx:id="col_phone" prefWidth="75.0" text="name" />
+                  <TableColumn fx:id="col_password" prefWidth="75.0" text="password" />
+                  <TableColumn fx:id="col_email" prefWidth="75.0" text="email" />
+                  <TableColumn fx:id="col_phone" prefWidth="75.0" text="phone" />
+                  <TableColumn fx:id="col_address" prefWidth="75.0" text="address" />
+                  <TableColumn prefWidth="75.0" text="birthday" fx:id="xol_birthday" />
+                  <TableColumn fx:id="col_sex" prefWidth="75.0" text="sex" />
+                  <TableColumn fx:id="col_role" prefWidth="75.0" text="role" />
+              </columns>
+            </TableView>
+         </children>
+        </Pane>
+    </center>
+</BorderPane>
