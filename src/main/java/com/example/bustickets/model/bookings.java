@@ -1,6 +1,6 @@
 package com.example.bustickets.model;
 
-public class bookings {
+public class bookings extends detail_tickets {
     private int idbookings;
     private String code;
     private int status;

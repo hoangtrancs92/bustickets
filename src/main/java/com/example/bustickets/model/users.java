@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-public class users {
+public class users  extends bookings {
     private int idusers;
     private String password;
     private String name;

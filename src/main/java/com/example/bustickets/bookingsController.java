@@ -162,6 +162,19 @@ public class bookingsController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    // Chuyển sang create_tickets.fxml
+    public void switchToViewDetailTickets(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("detaitticket_users.fxml"));
+        Parent userViewParent = loader.load();
+        Scene scene = new Scene(userViewParent);
+        stage.setScene(scene);
+        createticketsController controller = loader.getController();
+        controller.getUser(user);
+        stage.setScene(scene);
+        stage.show();
+    }
     // viet code truy xuat sql tai day
     // nut them cho ngoi bao gom kiem tra role, user, admin, employees
     @FXML
