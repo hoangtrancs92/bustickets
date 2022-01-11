@@ -82,6 +82,10 @@ public class bookingsController implements Initializable {
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
             managerEmploy_button.setStyle("-fx-opacity: 0");
+            txt_ten.setDisable(true);
+            txt_ten.setStyle("-fx-opacity:0");
+            txt_sdt.setDisable(true);
+            txt_sdt.setStyle("-fx-opacity:0");
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else if(user.getRole() == 2){
@@ -170,7 +174,7 @@ public class bookingsController implements Initializable {
         Parent userViewParent = loader.load();
         Scene scene = new Scene(userViewParent);
         stage.setScene(scene);
-        createticketsController controller = loader.getController();
+        dtUserController controller = loader.getController();
         controller.getUser(user);
         stage.setScene(scene);
         stage.show();

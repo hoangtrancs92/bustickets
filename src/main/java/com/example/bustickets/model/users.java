@@ -32,7 +32,9 @@ public class users  extends bookings {
         this.birthday = birthday;
         this.role = role;
     }
-
+    public users(int idusers){
+        this.idusers = idusers;
+    }
     public users(int idusers, String name) {
         this.idusers = idusers;
         this.name = name;

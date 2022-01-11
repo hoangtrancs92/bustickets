@@ -39,7 +39,7 @@ public class registerController {
     private Stage stage;
     private Scene scene;
     private Parent fxmlLoader;
-    public void buttonRegister (ActionEvent event){
+    public void buttonRegister (ActionEvent event) throws SQLException {
         final String secretKey = "12345678";
 
         String name = usernameField.getText();
@@ -58,12 +58,21 @@ public class registerController {
         if(name.isBlank() == false && password.isBlank() == false && confirmPassword.isBlank() == false && address.isBlank() == false && phone.isBlank() == false && email.isBlank() == false && birthday.isBlank() == false || rButton1.isSelected() || rButton2.isSelected() || rButton3.isSelected()){ // kiểm tra Empty
 
             DataValidator check = new DataValidator() ;
+
             //check Email
-            if (check.checkEmail(EmailField,lblEmailMessage) == false){
+            if (check.checkEmail(email) == false){
+                lblEmailMessage.setText("Email không hợp lệ");
+                lblEmailMessage.setTextFill(Color.RED);
                 return;
             }
+//            if (check.checkDuplicationEmail(email) == false){
+//                lblEmailMessage.setText("Email đã có người sử dụng!");
+//                lblEmailMessage.setTextFill(Color.RED);
+//            }
             //check SDT
-            if (check.checkSDT(phoneField,lblPhoneMessage) == false){
+            if (check.checkSDT(phone) == false){
+                lblPhoneMessage.setText("Số điện thoại không hợp lệ!");
+                lblPhoneMessage.setTextFill(Color.RED);
                 return;
             }
             //check password
