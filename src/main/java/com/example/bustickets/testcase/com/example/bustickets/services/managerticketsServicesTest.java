@@ -17,7 +17,7 @@ class managerticketsServicesTest {
     public void testID() {
         try {
             List<detail_tickets> c = mngS.getId();
-            Assertions.assertEquals(c.get(0).getIddetail_tickets()  ,"05387658-35c0-4ca1-9410-72eeeacd0633");
+            Assertions.assertEquals(c.get(0).getIddetail_tickets()  ,"01f780ab-ed26-4303-a1f2-93a55c21f38c");
         } catch (SQLException e) {
             e.printStackTrace();
         }
