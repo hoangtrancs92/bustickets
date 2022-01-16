@@ -1,15 +1,16 @@
 package com.example.bustickets.services;
 
 import com.example.bustickets.config.JdbcUtils;
+import com.example.bustickets.model.cars;
+import com.example.bustickets.model.detail_tickets;
 import com.example.bustickets.model.tickets;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class managerticketsServices {
     public  ObservableList<tickets> observableList(){
@@ -35,5 +36,17 @@ public class managerticketsServices {
             e.printStackTrace();
         }
         return  result;
+    }
+    public List<detail_tickets> getId() throws SQLException {
+        List<detail_tickets> result = new ArrayList<>();
+        try(Connection conn = JdbcUtils.getCnn()){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM  detail_tickets");
+            while (rs.next()){
+                detail_tickets dt = new detail_tickets(rs.getString(1));
+                result.add(dt);
+            }
+        }
+        return result;
     }
 }

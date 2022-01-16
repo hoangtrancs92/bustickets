@@ -4,6 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -151,6 +153,20 @@
             </children></Pane>
     </top>
     <center>
-        <Pane prefHeight="426.0" prefWidth="1159.0" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" BorderPane.alignment="CENTER" />
+        <Pane prefHeight="426.0" prefWidth="1159.0" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="table_view" layoutX="17.0" layoutY="31.0" prefHeight="527.0" prefWidth="1127.0" stylesheets="@css/css_managerTickets.css">
+              <columns>
+                <TableColumn fx:id="name_cl" prefWidth="146.22085571289062" text="Tên" />
+                  <TableColumn fx:id="phone_cl" prefWidth="105.00738525390625" text="Số điện thoại" />
+                  <TableColumn fx:id="idbooking_cl" prefWidth="86.49258422851562" text="Mã đặt vé" />
+                  <TableColumn fx:id="idseat_cl" prefWidth="320.22540283203125" text="Mã chỗ" />
+                  <TableColumn fx:id="price_cl" prefWidth="102.34033203125" text="Giá vé" />
+                  <TableColumn fx:id="dateStart_cl" prefWidth="147.90155029296875" text="Ngày khởi hành" />
+                  <TableColumn fx:id="timeStart_cl" minWidth="0.0" prefWidth="118.038818359375" text="Giờ khỏi hành" />
+                  <TableColumn fx:id="carName_cl" minWidth="0.0" prefWidth="101.6343994140625" text="Mã xe" />
+              </columns>
+            </TableView>
+         </children></Pane>
     </center>
 </BorderPane>

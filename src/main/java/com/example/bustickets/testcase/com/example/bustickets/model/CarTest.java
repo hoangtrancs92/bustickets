@@ -1,4 +1,4 @@
-package com.example.bustickets.testcase.com.example.bustickets.model;
+package com.example.bustickets.model;
 
 import com.example.bustickets.model.cars;
 import com.example.bustickets.services.carServices;

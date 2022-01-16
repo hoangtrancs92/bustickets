@@ -1,19 +1,28 @@
 package com.example.bustickets;
 
+import com.example.bustickets.alerts.totalMoney;
 import com.example.bustickets.model.users;
+import com.example.bustickets.services.TotalMoneyServices;
+import com.example.bustickets.services.managerticketsServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class dtUserController {
+public class dtUserController implements Initializable {
     //Hiển thị và lấy dữ liệu user
     @FXML
     private Label lblName;
@@ -29,7 +38,20 @@ public class dtUserController {
     private Button managerTicket_button;
     users user = new users();
 
-    public void getUser(users u){
+    private void setTable_view(){
+        TotalMoneyServices totalMoneyServices = new TotalMoneyServices();
+        name_cl.setCellValueFactory(new PropertyValueFactory<>("name"));
+        phone_cl.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        idbooking_cl.setCellValueFactory(new PropertyValueFactory<>("idbookings"));
+        idseat_cl.setCellValueFactory(new PropertyValueFactory<>("iddetail_tickets"));
+        price_cl.setCellValueFactory(new PropertyValueFactory<>("price"));
+        dateStart_cl.setCellValueFactory(new PropertyValueFactory<>("date_start"));
+        timeStart_cl.setCellValueFactory(new PropertyValueFactory<>("time_start"));
+        carName_cl.setCellValueFactory(new PropertyValueFactory<>("code_car"));
+        table_view.setItems((totalMoneyServices.observableList(user)));
+    }
+
+    public users getUser(users u){
         user.setIdusers(u.getIdusers());
         user.setName(u.getName());
         user.setAddress(u.getAddress());
@@ -51,6 +73,8 @@ public class dtUserController {
             managerEmploy_button.setStyle("-fx-opacity: 0");
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
+            setTable_view();
+
         }else if(user.getRole() == 2){
             managerUser_button.setDisable(true);
             managerUser_button.setStyle("-fx-opacity: 0");
@@ -58,9 +82,12 @@ public class dtUserController {
             managerEmploy_button.setStyle("-fx-opacity: 0");
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
+            setTable_view();
         }else{
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));;}
+            setTable_view();
+        return user;
     }
     //Nút đăng xuất
     public void Logout(ActionEvent event) throws IOException {
@@ -129,8 +156,34 @@ public class dtUserController {
         stage.show();
     }
     // viet code truy xuat sql tai day
+    @FXML
+    private TableView<totalMoney> table_view;
+    @FXML
+    private TableColumn<totalMoney, String> name_cl;
+
+    @FXML
+    private TableColumn<totalMoney, String> phone_cl;
+
+    @FXML
+    private TableColumn<totalMoney, Integer> price_cl;
+
+    @FXML
+    private TableColumn<totalMoney, String> timeStart_cl;
+
+    @FXML
+    private TableColumn<totalMoney, String> carName_cl;
+
+    @FXML
+    private TableColumn<totalMoney, String> dateStart_cl;
+
+    @FXML
+    private TableColumn<totalMoney, Integer> idbooking_cl;
+
+    @FXML
+    private TableColumn<totalMoney, String> idseat_cl;
 
 
-
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 }

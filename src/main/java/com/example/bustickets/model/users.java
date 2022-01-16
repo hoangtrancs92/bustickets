@@ -1,4 +1,5 @@
 package com.example.bustickets.model;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,6 +16,7 @@ public class users  extends bookings {
     private int sex;
     private String birthday;
     private int role;
+    Button update;
 
     //public users(TextField usernameField, PasswordField passwordField, TextField emailField, TextField phoneField, TextField addressField, DatePicker birthday, int sex) {}
 
@@ -71,6 +73,14 @@ public class users  extends bookings {
         this.sex = sex;
     }
 
+    public users(int idusers, String name, String email,String phone, String address, String birthday){
+        this.idusers = idusers;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.birthday = birthday;
+    }
     @Override
     public String toString() {
         return name;

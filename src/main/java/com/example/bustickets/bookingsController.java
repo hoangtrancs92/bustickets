@@ -57,6 +57,8 @@ public class bookingsController implements Initializable {
     private TextField txt_sdt;
     @FXML
     private TextField txt_ten;
+    @FXML
+    private Button button_detailTickets;
 
     private Mylistener mylistener;
     private MyListenner_bookingsSeats myListenner_bookingsSeats;
@@ -89,6 +91,9 @@ public class bookingsController implements Initializable {
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else if(user.getRole() == 2){
+            button_detailTickets.setText("");
+            button_detailTickets.setStyle("-fx-text-fill: #475B90");
+            button_detailTickets.setDisable(true);
             managerUser_button.setDisable(true);
             managerUser_button.setStyle("-fx-opacity: 0");
             managerEmploy_button.setDisable(true);
@@ -96,6 +101,9 @@ public class bookingsController implements Initializable {
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
         }else{
+            button_detailTickets.setDisable(true);
+            button_detailTickets.setText("");
+            button_detailTickets.setStyle("-fx-text-fill: #475B90");
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));;};
         return user;
@@ -187,36 +195,41 @@ public class bookingsController implements Initializable {
         alert al = new alert();
         if(arrayList.size() > 0){
             if(user.getRole() == 1){
-                bookingsServices bkS = new bookingsServices();
-                bookings bk = new bookings(UUID.randomUUID().toString(),1,user.getIdusers());
-                bkS.addBookingUser(bk);
-                Thread.sleep(100);
-                for(int i = 1; i < arrayList.size();i++){
-                    System.out.println("da vao");
-                    System.out.println(arrayList.get(i));
-                    System.out.println("tiep theo");
-                    System.out.println("Controller" +bkS.getBookings());
-                    detailticketsServices dtS = new detailticketsServices();
-                    detail_tickets dt = new detail_tickets(arrayList.get(i));
-                    dtS.updateDetailTickets(dt,bkS.getBookings());
-                    System.out.println("thanh cong");
+                if(arrayList.size() > 1){
+                    bookingsServices bkS = new bookingsServices();
+                    bookings bk = new bookings(UUID.randomUUID().toString(),1,user.getIdusers());
+                    bkS.addBookingUser(bk);
+                    Thread.sleep(100);
+                    for(int i = 1; i < arrayList.size();i++){
+                        System.out.println("da vao");
+                        System.out.println(arrayList.get(i));
+                        System.out.println("tiep theo");
+                        System.out.println("Controller" +bkS.getBookings());
+                        detailticketsServices dtS = new detailticketsServices();
+                        detail_tickets dt = new detail_tickets(arrayList.get(i));
+                        dtS.updateDetailTickets(dt,bkS.getBookings());
+                        System.out.println("thanh cong");
+                    }
+                    al.showAlertWithHeaderText("Mã đặt chỗ của bạn: " + bkS.getBookings() +'\n'+"alo alo");
+                    Thread.sleep(100);
+                    // load lai trang
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("bookings_tickets.fxml"));
+                    Parent userViewParent = loader.load();
+                    Scene scene = new Scene(userViewParent);
+                    stage.setScene(scene);
+                    bookingsController controller = loader.getController();
+                    controller.getUser(user);
+                    stage.setScene(scene);
+                    stage.show();
                 }
-                al.showAlertWithHeaderText("Mã đặt chỗ của bạn: " + bkS.getBookings() +'\n'+"alo alo");
-                Thread.sleep(100);
-                // load lai trang
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("bookings_tickets.fxml"));
-                Parent userViewParent = loader.load();
-                Scene scene = new Scene(userViewParent);
-                stage.setScene(scene);
-                bookingsController controller = loader.getController();
-                controller.getUser(user);
-                stage.setScene(scene);
-                stage.show();
+                else
+                    al.showAlertWithWarningHeaderText();
+
             }
-            if((user.getRole() == 3 || user.getRole() == 2) && arrayList.size()>1){
-                if (txt_ten.getText().isEmpty() ==false && txt_sdt.getText().isEmpty() == false ){
+            if((user.getRole() == 3 || user.getRole() == 2) ){
+                if (txt_ten.getText().isEmpty() ==false && txt_sdt.getText().isEmpty() == false && arrayList.size()>=2 ){
                     users us = new users();
                     us.setName(txt_ten.getText());
                     us.setPhone(txt_sdt.getText());
