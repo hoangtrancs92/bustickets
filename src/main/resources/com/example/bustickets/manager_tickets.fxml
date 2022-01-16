@@ -133,7 +133,7 @@
                   <Insets right="20.0" />
                </padding>
             </Label>
-            <Button alignment="CENTER_RIGHT" layoutX="837.0" layoutY="72.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="564.0" styleClass="btn_xemve" text="Vé đã đặt">
+            <Button alignment="CENTER_RIGHT" layoutX="837.0" layoutY="72.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="564.0" styleClass="btn_xemve">
                <padding>
                   <Insets right="15.0" />
                </padding></Button>

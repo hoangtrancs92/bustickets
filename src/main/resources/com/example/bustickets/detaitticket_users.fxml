@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1400" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.manageruserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1400" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bustickets.dtUserController">
     <left>
         <Pane prefHeight="677.0" prefWidth="241.0" styleClass="menu" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
             <children>
@@ -31,7 +31,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="managerEmploy_button" layoutX="-5.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToManage_employees" prefHeight="90.0" prefWidth="245.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Nhân viên">
+                <Button fx:id="managerEmploy_button" layoutX="-5.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToManage_users" prefHeight="90.0" prefWidth="245.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Nhân viên">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -31;">
                             <image>
@@ -61,7 +61,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="managerTicket_button" layoutX="-6.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchToManager_tickets" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý vé" textAlignment="JUSTIFY">
+                <Button fx:id="managerTicket_button" layoutX="-6.0" layoutY="180.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý vé" textAlignment="JUSTIFY">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -30;">
                             <image>
@@ -76,7 +76,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="managerUser_button" layoutX="-6.0" layoutY="270.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý user">
+                <Button fx:id="managerUser_button" layoutX="-6.0" layoutY="270.0" mnemonicParsing="false" onAction="#switchToManage_users" prefHeight="90.0" prefWidth="247.0" style="-fx-background-color: #475B90#475B90;" styleClass="btn" stylesheets="@css/main.css" text="Quản lý user">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -23;">
                             <image>
@@ -91,20 +91,20 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-            <Button layoutY="550.0" mnemonicParsing="false" onAction="#Logout" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: none;" text="Đăng xuất" textAlignment="CENTER" textFill="#ffffff4d">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+                <Button layoutY="550.0" mnemonicParsing="false" onAction="#Logout" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: none;" text="Đăng xuất" textAlignment="CENTER" textFill="#ffffff4d">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
             </children></Pane>
     </left>
     <top>
         <Pane prefHeight="107.0" prefWidth="1400.0" style="-fx-border-color: white; -fx-background-color: white;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
             <children>
-                <Pane layoutY="-4.0" prefHeight="113.0" prefWidth="241.0" style="-fx-background-color: #B3CDE9#B3CDE9;">
+                <Pane layoutX="-4.0" layoutY="-3.0" prefHeight="113.0" prefWidth="245.0" style="-fx-background-color: #B3CDE9;">
                     <children>
                         <Label layoutX="10.0" layoutY="16.0" text="OUBus" textFill="#475b90">
                             <font>
@@ -120,63 +120,53 @@
                         </Label>
                     </children>
                 </Pane>
-            <ImageView fitHeight="108.0" fitWidth="389.0" layoutX="241.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/decorate.png" />
-               </image>
-            </ImageView>
-                <Label layoutX="253.0" layoutY="52.0" prefHeight="29.0" prefWidth="139.0" text="Quản lý users" textFill="#475b90">
+                <ImageView fitHeight="117.0" fitWidth="376.0" layoutX="241.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/decorate.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="lblName" alignment="CENTER_RIGHT" layoutX="533.0" prefHeight="39.0" prefWidth="867.0" styleClass="name_user" text="Name">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <padding>
+                        <Insets right="20.0" />
+                    </padding>
+                </Label>
+                <Button alignment="CENTER_RIGHT" layoutX="837.0" layoutY="72.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="564.0" styleClass="btn_xemve" text="Vé đã đặt">
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding></Button>
+                <Label fx:id="lblID" alignment="CENTER_RIGHT" layoutX="713.0" layoutY="38.0" prefHeight="35.0" prefWidth="687.0" styleClass="id_user" text="ID">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <padding>
+                        <Insets right="20.0" />
+                    </padding>
+                </Label>
+                <Label layoutX="291.0" layoutY="55.0" text="Xem vé" textFill="#475b90">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-            <Label fx:id="lblName" layoutX="1131.0" layoutY="54.0">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblID" layoutX="1131.0" layoutY="14.0">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblName" alignment="CENTER_RIGHT" layoutX="533.0" prefHeight="39.0" prefWidth="867.0" styleClass="name_user" text="Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <padding>
-                  <Insets right="20.0" />
-               </padding>
-            </Label>
-            <Label fx:id="lblID" alignment="CENTER_RIGHT" layoutX="615.0" layoutY="39.0" prefHeight="35.0" prefWidth="785.0" styleClass="id_user" text="ID">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <padding>
-                  <Insets right="20.0" />
-               </padding>
-            </Label>
-            <Button alignment="CENTER_RIGHT" layoutX="746.0" layoutY="74.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="656.0" styleClass="btn_xemve">
-               <padding>
-                  <Insets right="15.0" />
-               </padding>
-            </Button>
             </children></Pane>
     </top>
     <center>
         <Pane prefHeight="426.0" prefWidth="1159.0" style="-fx-background-color: #F7F7F7#F7F7F7;" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" layoutX="28.0" layoutY="27.0" prefHeight="535.0" prefWidth="1094.0" stylesheets="@css/css_managerTickets.css">
+            <TableView fx:id="table_view" layoutX="17.0" layoutY="31.0" prefHeight="527.0" prefWidth="1127.0" stylesheets="@css/css_managerTickets.css">
               <columns>
-                <TableColumn fx:id="id_cl" prefWidth="123.0" text="Mã khách hàng" />
-                <TableColumn fx:id="name_cl" prefWidth="208.0" text="Họ và Tên" />
-                  <TableColumn fx:id="email_cl" prefWidth="160.0" text="Email" />
-                  <TableColumn fx:id="phone_cl" prefWidth="173.0" text="Số điện thoại" />
-                  <TableColumn fx:id="address_cl" prefWidth="293.0" text="Địa chỉ" />
-                  <TableColumn fx:id="birthday_cl" prefWidth="136.0" text="Ngày sinh" />
+                <TableColumn fx:id="name_cl" prefWidth="146.22085571289062" text="Tên" />
+                  <TableColumn fx:id="phone_cl" prefWidth="105.00738525390625" text="Số điện thoại" />
+                  <TableColumn fx:id="idbooking_cl" prefWidth="86.49258422851562" text="Mã đặt vé" />
+                  <TableColumn fx:id="idseat_cl" prefWidth="320.22540283203125" text="Mã chỗ" />
+                  <TableColumn fx:id="price_cl" prefWidth="102.34033203125" text="Giá vé" />
+                  <TableColumn fx:id="dateStart_cl" prefWidth="147.90155029296875" text="Ngày khởi hành" />
+                  <TableColumn fx:id="timeStart_cl" minWidth="0.0" prefWidth="118.038818359375" text="Giờ khỏi hành" />
+                  <TableColumn fx:id="carName_cl" minWidth="0.0" prefWidth="101.6343994140625" text="Mã xe" />
               </columns>
             </TableView>
-         </children>
-        </Pane>
+         </children></Pane>
     </center>
 </BorderPane>

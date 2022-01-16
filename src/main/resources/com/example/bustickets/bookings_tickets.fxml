@@ -137,7 +137,7 @@
                   <Insets right="20.0" />
                </padding>
             </Label>
-            <Button alignment="CENTER_RIGHT" layoutX="768.0" layoutY="70.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="634.0" styleClass="btn_xemve" text="Vé đã đặt">
+            <Button fx:id="button_detailTickets" alignment="CENTER_RIGHT" layoutX="768.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchToViewDetailTickets" prefHeight="36.0" prefWidth="634.0" styleClass="btn_xemve" text="Vé đã đặt">
                <textFill>
                   <LinearGradient endX="0.46318289786223277" endY="0.7149643705463182" startX="0.9501187648456056" startY="0.28978622327790976">
                      <stops>
@@ -157,6 +157,9 @@
                <padding>
                   <Insets right="15.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </Button>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="202.0" layoutY="-61.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                <image>

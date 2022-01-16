@@ -1,7 +1,8 @@
 package com.example.bustickets;
 
+import com.example.bustickets.alerts.totalMoney;
 import com.example.bustickets.model.users;
-import com.example.bustickets.services.employeeServices;
+import com.example.bustickets.services.TotalMoneyServices;
 import com.example.bustickets.services.managerticketsServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,8 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class manageremployeesController implements Initializable {
-
+public class dtUserController implements Initializable {
     //Hiển thị và lấy dữ liệu user
     @FXML
     private Label lblName;
@@ -38,7 +38,20 @@ public class manageremployeesController implements Initializable {
     private Button managerTicket_button;
     users user = new users();
 
-    public void getUser(users u){
+    private void setTable_view(){
+        TotalMoneyServices totalMoneyServices = new TotalMoneyServices();
+        name_cl.setCellValueFactory(new PropertyValueFactory<>("name"));
+        phone_cl.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        idbooking_cl.setCellValueFactory(new PropertyValueFactory<>("idbookings"));
+        idseat_cl.setCellValueFactory(new PropertyValueFactory<>("iddetail_tickets"));
+        price_cl.setCellValueFactory(new PropertyValueFactory<>("price"));
+        dateStart_cl.setCellValueFactory(new PropertyValueFactory<>("date_start"));
+        timeStart_cl.setCellValueFactory(new PropertyValueFactory<>("time_start"));
+        carName_cl.setCellValueFactory(new PropertyValueFactory<>("code_car"));
+        table_view.setItems((totalMoneyServices.observableList(user)));
+    }
+
+    public users getUser(users u){
         user.setIdusers(u.getIdusers());
         user.setName(u.getName());
         user.setAddress(u.getAddress());
@@ -60,6 +73,8 @@ public class manageremployeesController implements Initializable {
             managerEmploy_button.setStyle("-fx-opacity: 0");
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
+            setTable_view();
+
         }else if(user.getRole() == 2){
             managerUser_button.setDisable(true);
             managerUser_button.setStyle("-fx-opacity: 0");
@@ -67,9 +82,12 @@ public class manageremployeesController implements Initializable {
             managerEmploy_button.setStyle("-fx-opacity: 0");
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));
+            setTable_view();
         }else{
             lblName.setText(u.getName());
             lblID.setText(String.valueOf("ID: " + u.getIdusers()));;}
+            setTable_view();
+        return user;
     }
     //Nút đăng xuất
     public void Logout(ActionEvent event) throws IOException {
@@ -139,37 +157,33 @@ public class manageremployeesController implements Initializable {
     }
     // viet code truy xuat sql tai day
     @FXML
-    private TableColumn<users, String> name_cl;
+    private TableView<totalMoney> table_view;
+    @FXML
+    private TableColumn<totalMoney, String> name_cl;
 
     @FXML
-    private TableColumn<users, String> phone_cl;
+    private TableColumn<totalMoney, String> phone_cl;
 
     @FXML
-    private TableView<users> tableView;
-    @FXML
-    private TableColumn<users, String> address_cl;
+    private TableColumn<totalMoney, Integer> price_cl;
 
     @FXML
-    private TableColumn<users, String> birthday_cl;
+    private TableColumn<totalMoney, String> timeStart_cl;
 
     @FXML
-    private TableColumn<users, String> email_cl;
+    private TableColumn<totalMoney, String> carName_cl;
 
     @FXML
-    private TableColumn<users, Integer> id_cl;
+    private TableColumn<totalMoney, String> dateStart_cl;
+
     @FXML
-    private TableColumn<users, Button> button_cl;
+    private TableColumn<totalMoney, Integer> idbooking_cl;
+
+    @FXML
+    private TableColumn<totalMoney, String> idseat_cl;
+
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
-        employeeServices emlS = new employeeServices();
-        id_cl.setCellValueFactory(new PropertyValueFactory<>("idusers"));
-        name_cl.setCellValueFactory(new PropertyValueFactory<>("name"));
-        email_cl.setCellValueFactory(new PropertyValueFactory<>("email"));
-        phone_cl.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        address_cl.setCellValueFactory(new PropertyValueFactory<>("address"));
-        birthday_cl.setCellValueFactory(new  PropertyValueFactory<>("birthday"));
-        tableView.setItems((emlS.observableList()));
+    public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-
 }
