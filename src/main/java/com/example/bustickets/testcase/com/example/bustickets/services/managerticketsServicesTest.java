@@ -22,4 +22,19 @@ class managerticketsServicesTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void testID_2() {
+        try {
+            List<detail_tickets> c = mngS.getId();
+            for (int i = 0; i < c.size();i++ ){
+                String iddetail_tickets = c.get(i).getIddetail_tickets();
+                for (int j = i+1; j < c.size();j++){
+                    Assertions.assertNotEquals(c.get(j).getIddetail_tickets(),iddetail_tickets);
+                    System.out.println(c.get(j).getIddetail_tickets() + " ## " + iddetail_tickets);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

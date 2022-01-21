@@ -2,9 +2,11 @@ package com.example.bustickets.services;
 
 import com.example.bustickets.config.JdbcUtils;
 import com.example.bustickets.model.tickets;
+import com.example.bustickets.model.users;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class createticketsServices {
     public  void addSetOfTickets(tickets t) throws SQLException {
@@ -40,6 +42,17 @@ public class createticketsServices {
         }
         return arrayList;
     }
-
+    public List<tickets> gettickets() throws SQLException {
+        List<tickets> result = new ArrayList<>();
+        try(Connection conn = JdbcUtils.getCnn()){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM tickets ");
+            while (rs.next()){
+                tickets tk = new tickets(rs.getInt(1),rs.getInt(4),rs.getString(2));
+                result.add(tk);
+            }
+        }
+        return result;
+    }
 
 }

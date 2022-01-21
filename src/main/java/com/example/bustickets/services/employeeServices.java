@@ -8,10 +8,7 @@ import com.example.bustickets.model.users;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,5 +33,32 @@ public class employeeServices {
             e.printStackTrace();
         }
         return  result;
+    }
+    public users getroleUsers(int roles){
+        users u = null;
+        try( Connection cnn = JdbcUtils.getCnn() ) {
+            PreparedStatement stm = cnn.prepareCall("SELECT * FROM bustickets_db.users where(role = ?)");
+            stm.setString(1, String.valueOf(roles));
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()){
+                u = new users(rs.getInt(1),rs.getString(4),rs.getInt(9));
+                break;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
+    }
+    public List<users> getuser() throws SQLException {
+        List<users> result = new ArrayList<>();
+        try(Connection conn = JdbcUtils.getCnn()){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM bustickets_db.users where(role = 2) ");
+            while (rs.next()){
+                users us = new users(rs.getString(2),rs.getString(4),rs.getInt(9),rs.getString(5));
+                result.add(us);
+            }
+        }
+        return result;
     }
 }

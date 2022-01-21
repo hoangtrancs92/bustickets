@@ -86,6 +86,11 @@ public class tickets  extends cars{
         this.setNumber_seat(number_seat);
     }
 
+    public tickets(int idtickets,int quanlity, String location_start ){
+        this.idtickets = idtickets;
+        this.quanlity = quanlity;
+        this.location_start = location_start;
+    }
 
     // --- Constructor ---
 
