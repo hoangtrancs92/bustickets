@@ -19,7 +19,7 @@ public class bookings extends detail_tickets {
         this.users_id = users_id;
     }
 
-    public bookings(int idbookings, String code, int status, int users_id, int seats_id) {
+    public bookings(int idbookings, String code, int status, int users_id) {
         this.idbookings = idbookings;
         this.code = code;
         this.status = status;

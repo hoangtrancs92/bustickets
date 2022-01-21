@@ -47,10 +47,12 @@ public class users  extends bookings {
         this.name = name;
         this.role = role;
     }
-    public users(int idusers, String name, String email){
-        this.idusers = idusers;
+    public users( String name, String email, int role,String phone){
+
         this.name = name;
         this.email = email;
+        this.role = role;
+        this.phone = phone;
     }
     public users(int idusers, String name, String password, String email, String phone, String address, String birthday, int sex, int role){
         this.idusers = idusers;

@@ -118,5 +118,16 @@ public class userServices {
         }
         return result;
     }
-
+    public List<users> getuserroles() throws SQLException {
+        List<users> result = new ArrayList<>();
+        try(Connection conn = JdbcUtils.getCnn()){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM bustickets_db.users where(role = 1) and users.email = null ");
+            while (rs.next()){
+                users us = new users(rs.getString(2),rs.getString(4),rs.getInt(9),rs.getString(5));
+                result.add(us);
+            }
+        }
+        return result;
+    }
 }

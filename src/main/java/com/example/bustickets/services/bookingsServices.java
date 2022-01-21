@@ -61,5 +61,16 @@ public class bookingsServices {
         }
         return idbookings;
     }
-
+    public List<bookings> getbooking() throws SQLException {
+        List<bookings> result = new ArrayList<>();
+        try(Connection conn = JdbcUtils.getCnn()){
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM bookings ");
+            while (rs.next()){
+                bookings bk = new bookings(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4));
+                result.add(bk);
+            }
+        }
+        return result;
+    }
 }

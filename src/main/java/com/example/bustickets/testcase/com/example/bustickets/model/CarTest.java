@@ -20,4 +20,31 @@ public class CarTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void TestSeatCar1(){
+        try {
+            List<cars> c = carSer.getCars();
+            Assertions.assertEquals(c.get(0).getNumber_seat(),16);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void TestSeatCar2(){
+        try {
+            List<cars> c = carSer.getCars();
+            Assertions.assertEquals(c.get(1).getNumber_seat(),20);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void TestSeatCar3(){
+        try {
+            List<cars> c = carSer.getCars();
+            Assertions.assertEquals(c.get(2).getNumber_seat(),24);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
